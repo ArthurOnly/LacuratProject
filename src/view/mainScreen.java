@@ -1,7 +1,9 @@
 package view;
 
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import model.functionScripts;
 
 public class mainScreen extends javax.swing.JFrame {
 
@@ -14,14 +16,17 @@ public class mainScreen extends javax.swing.JFrame {
         jLabelATISelect.setBackground(primary);
         jLabelCONSelect.setBackground(primary);  
         jDesktopPaneAbas.add(personCRUD);
-        personCRUD.setLocation(-8, 0);
-        repaintAll();        
-        
-        ((BasicInternalFrameUI)personCRUD.getUI()).setNorthPane(null);
+        jDesktopPaneAbas.add(dispositivosCRUD);
+        jDesktopPaneAbas.add(activityCRUD);
+        personCRUD.setLocation(-8, -4);
+        dispositivosCRUD.setLocation(-8,-4);
+        activityCRUD.setLocation(-8,-4);
+        repaintAll();                     
     }
     
     personHome personCRUD = new personHome();
-     
+    dispositivosHome dispositivosCRUD = new dispositivosHome();
+    activityHome activityCRUD = new activityHome();        
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -53,7 +58,6 @@ public class mainScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
 
@@ -253,12 +257,30 @@ public class mainScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    void setFramesVisible(JInternalFrame jf){
+        if (jf==personCRUD){
+            personCRUD.setVisible(true);
+            dispositivosCRUD.setVisible(false);
+            activityCRUD.setVisible(false);
+        }
+        if (jf==dispositivosCRUD){
+            personCRUD.setVisible(false);
+            dispositivosCRUD.setVisible(true);
+            activityCRUD.setVisible(false);
+        }
+        if (jf==activityCRUD){
+            personCRUD.setVisible(false);
+            dispositivosCRUD.setVisible(false);
+            activityCRUD.setVisible(true);
+        }
+    }
+    
     private void jLabelHomeSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeSelectMouseClicked
         jLabelHomeSelect.setBackground(secondary);
         jLabelATISelect.setBackground(primary);
         jLabelCONSelect.setBackground(primary);
         jLabelDisSelect.setBackground(primary);
-        jLabelPesSelect.setBackground(primary);       
+        jLabelPesSelect.setBackground(primary);        
         repaintAll();
     }//GEN-LAST:event_jLabelHomeSelectMouseClicked
 
@@ -268,7 +290,7 @@ public class mainScreen extends javax.swing.JFrame {
         jLabelCONSelect.setBackground(primary);
         jLabelDisSelect.setBackground(primary);
         jLabelPesSelect.setBackground(secondary);
-        personCRUD.setVisible(true);
+        setFramesVisible(personCRUD);
         repaintAll();
     }//GEN-LAST:event_jLabelPesSelectMouseClicked
 
@@ -278,6 +300,7 @@ public class mainScreen extends javax.swing.JFrame {
         jLabelCONSelect.setBackground(primary);
         jLabelDisSelect.setBackground(secondary);
         jLabelPesSelect.setBackground(primary);
+        setFramesVisible(dispositivosCRUD);
         repaintAll();
     }//GEN-LAST:event_jLabelDisSelectMouseClicked
 
@@ -287,6 +310,7 @@ public class mainScreen extends javax.swing.JFrame {
         jLabelCONSelect.setBackground(primary);
         jLabelDisSelect.setBackground(primary);
         jLabelPesSelect.setBackground(primary);
+        setFramesVisible(activityCRUD);
         repaintAll();
     }//GEN-LAST:event_jLabelATISelectMouseClicked
 
@@ -417,7 +441,7 @@ public class mainScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPaneAbas;
+    public javax.swing.JDesktopPane jDesktopPaneAbas;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelATISelect;
     private javax.swing.JLabel jLabelATIVOS;

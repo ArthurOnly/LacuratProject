@@ -2,12 +2,12 @@ package view;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
-public class personHome extends javax.swing.JInternalFrame {
+public class dispositivosHome extends javax.swing.JInternalFrame {
 
    
-    public personHome() {
+    public dispositivosHome() {
         initComponents();
-        ((BasicInternalFrameUI)this.getUI()).setNorthPane(null); 
+        ((BasicInternalFrameUI)this.getUI()).setNorthPane(null);
     }
 
     
@@ -15,18 +15,16 @@ public class personHome extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelPersonCRUD = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jPanelDispositivosCRUD = new javax.swing.JPanel();
+        jScrollPane = new javax.swing.JScrollPane();
+        jTableDispositivos = new javax.swing.JTable();
         jLabelDelete = new javax.swing.JLabel();
         jLabelADD = new javax.swing.JLabel();
         jLabelAtualizar = new javax.swing.JLabel();
         jLabelNome = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
         jLabelTelefone = new javax.swing.JLabel();
-        jTextFieldTelefone = new javax.swing.JTextField();
-        jTextFieldTurma = new javax.swing.JTextField();
-        jLabelTurma = new javax.swing.JLabel();
+        jTextFieldID = new javax.swing.JTextField();
         jLabelOBS = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaOBS = new javax.swing.JTextArea();
@@ -35,13 +33,13 @@ public class personHome extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(1000, 720));
         getContentPane().setLayout(null);
 
-        jPanelPersonCRUD.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelPersonCRUD.setPreferredSize(new java.awt.Dimension(1000, 720));
+        jPanelDispositivosCRUD.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelDispositivosCRUD.setPreferredSize(new java.awt.Dimension(1000, 720));
 
-        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableDispositivos.setForeground(new java.awt.Color(255, 255, 255));
+        jTableDispositivos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -49,7 +47,7 @@ public class personHome extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nome", "Turma", "Telefone", "Status"
+                "Nome", "Identificador", "Observações", "Tempo de uso"
             }
         ) {
             Class[] types = new Class [] {
@@ -60,10 +58,10 @@ public class personHome extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setGridColor(new java.awt.Color(204, 204, 204));
-        jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jTable1);
+        jTableDispositivos.setGridColor(new java.awt.Color(204, 204, 204));
+        jTableDispositivos.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jTableDispositivos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane.setViewportView(jTableDispositivos);
 
         jLabelDelete.setBackground(new java.awt.Color(16, 125, 172));
         jLabelDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -131,95 +129,83 @@ public class personHome extends javax.swing.JInternalFrame {
         jTextFieldNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabelTelefone.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelTelefone.setText("Telefone:");
+        jLabelTelefone.setText("Identificador:");
 
-        jTextFieldTelefone.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        jTextFieldTurma.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        jLabelTurma.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelTurma.setText("Turma:");
+        jTextFieldID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jLabelOBS.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelOBS.setText("Observações:");
 
         jTextAreaOBS.setColumns(20);
         jTextAreaOBS.setRows(5);
+        jTextAreaOBS.setPreferredSize(new java.awt.Dimension(220, 50));
         jScrollPane2.setViewportView(jTextAreaOBS);
 
-        javax.swing.GroupLayout jPanelPersonCRUDLayout = new javax.swing.GroupLayout(jPanelPersonCRUD);
-        jPanelPersonCRUD.setLayout(jPanelPersonCRUDLayout);
-        jPanelPersonCRUDLayout.setHorizontalGroup(
-            jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
-                .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelDispositivosCRUDLayout = new javax.swing.GroupLayout(jPanelDispositivosCRUD);
+        jPanelDispositivosCRUD.setLayout(jPanelDispositivosCRUDLayout);
+        jPanelDispositivosCRUDLayout.setHorizontalGroup(
+            jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDispositivosCRUDLayout.createSequentialGroup()
+                .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDispositivosCRUDLayout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(80, 80, 80)
-                        .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
-                        .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPersonCRUDLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabelADD, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabelAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(jLabelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(72, 72, 72))
-                            .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
+                        .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelDispositivosCRUDLayout.createSequentialGroup()
+                        .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDispositivosCRUDLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(jLabelADD, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(14, 14, 14)
+                                    .addComponent(jLabelAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(14, 14, 14)
+                                    .addComponent(jLabelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(72, 72, 72))
+                                .addGroup(jPanelDispositivosCRUDLayout.createSequentialGroup()
+                                    .addGap(118, 118, 118)
+                                    .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(80, 80, 80)))
+                            .addGroup(jPanelDispositivosCRUDLayout.createSequentialGroup()
                                 .addGap(118, 118, 118)
-                                .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(80, 80, 80)))
-                        .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelOBS, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(60, 60, 60))
         );
-        jPanelPersonCRUDLayout.setVerticalGroup(
-            jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
+        jPanelDispositivosCRUDLayout.setVerticalGroup(
+            jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDispositivosCRUDLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
-                        .addComponent(jLabelNome)
-                        .addGap(10, 10, 10)
-                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
-                        .addComponent(jLabelTurma)
-                        .addGap(10, 10, 10)
-                        .addComponent(jTextFieldTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
-                .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTelefone)
+                .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNome)
                     .addComponent(jLabelOBS))
                 .addGap(10, 10, 10)
-                .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
-                        .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabelADD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabelAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDispositivosCRUDLayout.createSequentialGroup()
+                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabelTelefone)
+                        .addGap(10, 10, 10)
+                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelADD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        getContentPane().add(jPanelPersonCRUD);
-        jPanelPersonCRUD.setBounds(0, 0, 1000, 720);
+        getContentPane().add(jPanelDispositivosCRUD);
+        jPanelDispositivosCRUD.setBounds(0, 0, 1000, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -290,14 +276,12 @@ public class personHome extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelOBS;
     private javax.swing.JLabel jLabelTelefone;
-    private javax.swing.JLabel jLabelTurma;
-    private javax.swing.JPanel jPanelPersonCRUD;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanelDispositivosCRUD;
+    private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableDispositivos;
     private javax.swing.JTextArea jTextAreaOBS;
+    private javax.swing.JTextField jTextFieldID;
     private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldTelefone;
-    private javax.swing.JTextField jTextFieldTurma;
     // End of variables declaration//GEN-END:variables
 }
