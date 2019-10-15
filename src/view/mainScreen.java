@@ -18,15 +18,18 @@ public class mainScreen extends javax.swing.JFrame {
         jDesktopPaneAbas.add(personCRUD);
         jDesktopPaneAbas.add(dispositivosCRUD);
         jDesktopPaneAbas.add(activityCRUD);
+        jDesktopPaneAbas.add(configuracoes);
         personCRUD.setLocation(-8, -4);
         dispositivosCRUD.setLocation(-8,-4);
         activityCRUD.setLocation(-8,-4);
+        configuracoes.setLocation(-8,-4);
         repaintAll();                     
     }
     
     personHome personCRUD = new personHome();
     dispositivosHome dispositivosCRUD = new dispositivosHome();
-    activityHome activityCRUD = new activityHome();        
+    activityHome activityCRUD = new activityHome(); 
+    configuracoes configuracoes = new configuracoes();
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -262,16 +265,25 @@ public class mainScreen extends javax.swing.JFrame {
             personCRUD.setVisible(true);
             dispositivosCRUD.setVisible(false);
             activityCRUD.setVisible(false);
+            configuracoes.setVisible(false);
         }
         if (jf==dispositivosCRUD){
             personCRUD.setVisible(false);
             dispositivosCRUD.setVisible(true);
             activityCRUD.setVisible(false);
+            configuracoes.setVisible(false);
         }
         if (jf==activityCRUD){
             personCRUD.setVisible(false);
             dispositivosCRUD.setVisible(false);
             activityCRUD.setVisible(true);
+            configuracoes.setVisible(false);
+        }
+        if (jf==configuracoes){
+            configuracoes.setVisible(true);
+            personCRUD.setVisible(false);
+            dispositivosCRUD.setVisible(false);
+            activityCRUD.setVisible(false);
         }
     }
     
@@ -320,6 +332,7 @@ public class mainScreen extends javax.swing.JFrame {
         jLabelCONSelect.setBackground(secondary);
         jLabelDisSelect.setBackground(primary);
         jLabelPesSelect.setBackground(primary);
+        setFramesVisible(configuracoes);
         repaintAll();
     }//GEN-LAST:event_jLabelCONSelectMouseClicked
 
@@ -397,10 +410,10 @@ public class mainScreen extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jPanel1MouseClicked
     
-    java.awt.Color secondary = new java.awt.Color(24, 154, 211);
-    java.awt.Color primary = new java.awt.Color(16, 125, 172);
-    java.awt.Color tertiary = new java.awt.Color(113, 199, 236);
-    
+    java.awt.Color secondary = configuracoes.secondary;
+    java.awt.Color primary = configuracoes.primary;
+    java.awt.Color tertiary = configuracoes.tertiary;    
+   
     void repaintAll(){        
         jPanelSelector.setVisible(false);
         jPanel1.setVisible(true);
