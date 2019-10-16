@@ -265,7 +265,7 @@ public class mainScreen extends javax.swing.JFrame {
             personCRUD.setVisible(true);
             dispositivosCRUD.setVisible(false);
             activityCRUD.setVisible(false);
-            configuracoes.setVisible(false);
+            configuracoes.setVisible(false);            
         }
         if (jf==dispositivosCRUD){
             personCRUD.setVisible(false);
@@ -415,6 +415,9 @@ public class mainScreen extends javax.swing.JFrame {
     java.awt.Color tertiary = configuracoes.tertiary;    
    
     void repaintAll(){        
+        java.awt.Color secondary = configuracoes.secondary;
+        java.awt.Color primary = configuracoes.primary;
+        java.awt.Color tertiary = configuracoes.tertiary;    
         jPanelSelector.setVisible(false);
         jPanel1.setVisible(true);
         jPanelSelector.setVisible(true);
