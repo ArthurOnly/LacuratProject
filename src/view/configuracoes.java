@@ -257,13 +257,14 @@ public class configuracoes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
    //Colocar no construtor
-    java.awt.Color secondary = new java.awt.Color(24, 154, 211);
-    java.awt.Color primary = new java.awt.Color(16, 125, 172);
-    java.awt.Color tertiary = new java.awt.Color(113, 199, 236);    
+    //java.awt.Color secondary = new java.awt.Color(24, 154, 211);
+    //java.awt.Color primary = new java.awt.Color(16, 125, 172);
+    //java.awt.Color tertiary = new java.awt.Color(113, 199, 236);    
     
-    /*java.awt.Color primary = new java.awt.Color(255, 255, 0);
+    java.awt.Color primary = new java.awt.Color(220, 220, 0);
     java.awt.Color secondary = new java.awt.Color(204, 204, 0);
-    java.awt.Color tertiary = new java.awt.Color(255, 255, 153); */
+    java.awt.Color tertiary = new java.awt.Color(230, 230, 10);
+    
     
     private void jLabelAplyColorsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAplyColorsMouseEntered
         jLabelAplyColors.setBackground(tertiary);

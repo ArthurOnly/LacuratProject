@@ -7,6 +7,10 @@ import model.functionScripts;
 
 public class mainScreen extends javax.swing.JFrame {
 
+    personHome personCRUD = new personHome();
+    dispositivosHome dispositivosCRUD = new dispositivosHome();
+    activityHome activityCRUD = new activityHome(); 
+    configuracoes configuracoes = new configuracoes();  
     
     public mainScreen() {
         initComponents();              
@@ -23,13 +27,12 @@ public class mainScreen extends javax.swing.JFrame {
         dispositivosCRUD.setLocation(-8,-4);
         activityCRUD.setLocation(-8,-4);
         configuracoes.setLocation(-8,-4);
+        themeChanger();
+        activityCRUD.themeChanger();        
         repaintAll();                     
-    }
+    }    
+      
     
-    personHome personCRUD = new personHome();
-    dispositivosHome dispositivosCRUD = new dispositivosHome();
-    activityHome activityCRUD = new activityHome(); 
-    configuracoes configuracoes = new configuracoes();
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -155,8 +158,8 @@ public class mainScreen extends javax.swing.JFrame {
         jPanel1.add(jLabelCONFIGURACOESI);
         jLabelCONFIGURACOESI.setBounds(10, 400, 40, 40);
 
-        jPanelSelector.setBackground(new java.awt.Color(16, 125, 172));
-        jPanelSelector.setOpaque(false);
+        jPanelSelector.setBackground(configuracoes.primary);
+        jPanelSelector.setForeground(new java.awt.Color(204, 255, 51));
         jPanelSelector.setLayout(null);
 
         jLabelPesSelect.setBackground(new java.awt.Color(16, 125, 172));
@@ -260,6 +263,12 @@ public class mainScreen extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    void themeChanger(){
+        activityCRUD.primary=this.primary;
+        activityCRUD.secondary=this.secondary;
+        activityCRUD.tertiary=this.tertiary;        
+    }
+    
     void setFramesVisible(JInternalFrame jf){
         if (jf==personCRUD){
             personCRUD.setVisible(true);
@@ -414,10 +423,7 @@ public class mainScreen extends javax.swing.JFrame {
     java.awt.Color primary = configuracoes.primary;
     java.awt.Color tertiary = configuracoes.tertiary;    
    
-    void repaintAll(){        
-        java.awt.Color secondary = configuracoes.secondary;
-        java.awt.Color primary = configuracoes.primary;
-        java.awt.Color tertiary = configuracoes.tertiary;    
+    void repaintAll(){          
         jPanelSelector.setVisible(false);
         jPanel1.setVisible(true);
         jPanelSelector.setVisible(true);

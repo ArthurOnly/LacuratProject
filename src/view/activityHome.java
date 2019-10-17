@@ -6,7 +6,7 @@ public class activityHome extends javax.swing.JInternalFrame {
 
    
     public activityHome() {
-        initComponents();
+        initComponents();        
         ((BasicInternalFrameUI)this.getUI()).setNorthPane(null);
     }
 
@@ -64,7 +64,6 @@ public class activityHome extends javax.swing.JInternalFrame {
             }
         });
         jTableDispositivos.setGridColor(new java.awt.Color(204, 204, 204));
-        jTableDispositivos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jTableDispositivos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane.setViewportView(jTableDispositivos);
 
@@ -169,13 +168,13 @@ public class activityHome extends javax.swing.JInternalFrame {
         jRadioButtonSectionEndNo.setText("Não");
         jRadioButtonSectionEndNo.setEnabled(false);
         jPanelActivityCRUD.add(jRadioButtonSectionEndNo);
-        jRadioButtonSectionEndNo.setBounds(610, 114, 111, 28);
+        jRadioButtonSectionEndNo.setBounds(610, 114, 111, 23);
 
         buttonGroupAutomaticEnd.add(jRadioButtonSectionEndYes);
         jRadioButtonSectionEndYes.setText("Sim");
         jRadioButtonSectionEndYes.setEnabled(false);
         jPanelActivityCRUD.add(jRadioButtonSectionEndYes);
-        jRadioButtonSectionEndYes.setBounds(540, 114, 54, 28);
+        jRadioButtonSectionEndYes.setBounds(540, 114, 41, 23);
 
         try {
             jFormattedTextFieldHourLimit.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("## hora(s)")));
@@ -201,9 +200,15 @@ public class activityHome extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    java.awt.Color secondary = new java.awt.Color(24, 154, 211);
-    java.awt.Color primary = new java.awt.Color(16, 125, 172);
-    java.awt.Color tertiary = new java.awt.Color(113, 199, 236);
+    java.awt.Color secondary;
+    java.awt.Color primary;
+    java.awt.Color tertiary;
+    
+    public void themeChanger(){
+        jLabelADD.setBackground(primary);
+        jLabelAtualizar.setBackground(primary);
+        jLabelDelete.setBackground(primary);
+    }
     
     private void jLabelADDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelADDMouseEntered
         jLabelADD.setBackground(tertiary);
@@ -282,9 +287,9 @@ public class activityHome extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox jComboBoxDispositivo;
     private javax.swing.JComboBox jComboBoxUser;
     private javax.swing.JFormattedTextField jFormattedTextFieldHourLimit;
-    private javax.swing.JLabel jLabelADD;
-    private javax.swing.JLabel jLabelAtualizar;
-    private javax.swing.JLabel jLabelDelete;
+    public javax.swing.JLabel jLabelADD;
+    public javax.swing.JLabel jLabelAtualizar;
+    public javax.swing.JLabel jLabelDelete;
     private javax.swing.JLabel jLabelDispositivo;
     private javax.swing.JLabel jLabelOBS;
     private javax.swing.JLabel jLabelUser;
