@@ -17,7 +17,7 @@ public class personHome extends javax.swing.JInternalFrame {
 
         jPanelPersonCRUD = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTablePessoas = new javax.swing.JTable();
         jLabelDelete = new javax.swing.JLabel();
         jLabelADD = new javax.swing.JLabel();
         jLabelAtualizar = new javax.swing.JLabel();
@@ -30,6 +30,9 @@ public class personHome extends javax.swing.JInternalFrame {
         jLabelOBS = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaOBS = new javax.swing.JTextArea();
+        jLabelPesquisarPorNome = new javax.swing.JLabel();
+        jLabelPesquisarPorNTelefone = new javax.swing.JLabel();
+        jLabelPesquisarPorTurma = new javax.swing.JLabel();
 
         setBorder(null);
         setPreferredSize(new java.awt.Dimension(1000, 720));
@@ -40,8 +43,8 @@ public class personHome extends javax.swing.JInternalFrame {
 
         jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePessoas.setForeground(new java.awt.Color(255, 255, 255));
+        jTablePessoas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -60,10 +63,10 @@ public class personHome extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setGridColor(new java.awt.Color(204, 204, 204));
-        jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jTable1);
+        jTablePessoas.setGridColor(new java.awt.Color(204, 204, 204));
+        jTablePessoas.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jTablePessoas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(jTablePessoas);
 
         jLabelDelete.setBackground(new java.awt.Color(16, 125, 172));
         jLabelDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -147,6 +150,66 @@ public class personHome extends javax.swing.JInternalFrame {
         jTextAreaOBS.setRows(5);
         jScrollPane2.setViewportView(jTextAreaOBS);
 
+        jLabelPesquisarPorNome.setBackground(new java.awt.Color(16, 125, 172));
+        jLabelPesquisarPorNome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPesquisarPorNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
+        jLabelPesquisarPorNome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelPesquisarPorNome.setOpaque(true);
+        jLabelPesquisarPorNome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNomeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNomeMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNomeMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNomeMouseReleased(evt);
+            }
+        });
+
+        jLabelPesquisarPorNTelefone.setBackground(new java.awt.Color(16, 125, 172));
+        jLabelPesquisarPorNTelefone.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPesquisarPorNTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
+        jLabelPesquisarPorNTelefone.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelPesquisarPorNTelefone.setOpaque(true);
+        jLabelPesquisarPorNTelefone.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNTelefoneMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNTelefoneMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNTelefoneMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNTelefoneMouseReleased(evt);
+            }
+        });
+
+        jLabelPesquisarPorTurma.setBackground(new java.awt.Color(16, 125, 172));
+        jLabelPesquisarPorTurma.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPesquisarPorTurma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
+        jLabelPesquisarPorTurma.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelPesquisarPorTurma.setOpaque(true);
+        jLabelPesquisarPorTurma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorTurmaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorTurmaMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorTurmaMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorTurmaMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelPersonCRUDLayout = new javax.swing.GroupLayout(jPanelPersonCRUD);
         jPanelPersonCRUD.setLayout(jPanelPersonCRUDLayout);
         jPanelPersonCRUDLayout.setHorizontalGroup(
@@ -160,13 +223,28 @@ public class personHome extends javax.swing.JInternalFrame {
                         .addGap(118, 118, 118)
                         .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(80, 80, 80)
+                            .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
+                                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelPesquisarPorNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(52, 52, 52)
                         .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
+                                .addComponent(jTextFieldTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelPesquisarPorTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
                         .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
+                                .addGap(118, 118, 118)
+                                .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
+                                        .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabelPesquisarPorNTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(44, 44, 44))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPersonCRUDLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabelADD, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -174,13 +252,8 @@ public class personHome extends javax.swing.JInternalFrame {
                                 .addComponent(jLabelAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(14, 14, 14)
                                 .addComponent(jLabelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(72, 72, 72))
-                            .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
-                                .addGap(118, 118, 118)
-                                .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(80, 80, 80)))
+                                .addGap(71, 71, 71)))
+                        .addGap(8, 8, 8)
                         .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelOBS, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -198,7 +271,9 @@ public class personHome extends javax.swing.JInternalFrame {
                     .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
                         .addComponent(jLabelTurma)
                         .addGap(10, 10, 10)
-                        .addComponent(jTextFieldTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextFieldTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelPesquisarPorNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPesquisarPorTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTelefone)
@@ -207,14 +282,15 @@ public class personHome extends javax.swing.JInternalFrame {
                 .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanelPersonCRUDLayout.createSequentialGroup()
-                        .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
                         .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabelADD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabelAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelPesquisarPorNTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanelPersonCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelADD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -282,6 +358,60 @@ public class personHome extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jLabelDeleteMouseReleased
 
+    private void jLabelPesquisarPorNomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseEntered
+        jLabelPesquisarPorNome.setBackground(tertiary);
+    }//GEN-LAST:event_jLabelPesquisarPorNomeMouseEntered
+
+    private void jLabelPesquisarPorNomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseExited
+        jLabelPesquisarPorNome.setBackground(primary);
+    }//GEN-LAST:event_jLabelPesquisarPorNomeMouseExited
+
+    private void jLabelPesquisarPorNomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMousePressed
+        jLabelPesquisarPorNome.setBackground(secondary);
+    }//GEN-LAST:event_jLabelPesquisarPorNomeMousePressed
+
+    private void jLabelPesquisarPorNomeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseReleased
+        if(jLabelPesquisarPorNome.getBackground()==secondary){
+            jLabelPesquisarPorNome.setBackground(tertiary);
+        }
+    }//GEN-LAST:event_jLabelPesquisarPorNomeMouseReleased
+
+    private void jLabelPesquisarPorNTelefoneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNTelefoneMouseEntered
+        jLabelPesquisarPorNTelefone.setBackground(tertiary);
+    }//GEN-LAST:event_jLabelPesquisarPorNTelefoneMouseEntered
+
+    private void jLabelPesquisarPorNTelefoneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNTelefoneMouseExited
+        jLabelPesquisarPorNTelefone.setBackground(primary);
+    }//GEN-LAST:event_jLabelPesquisarPorNTelefoneMouseExited
+
+    private void jLabelPesquisarPorNTelefoneMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNTelefoneMousePressed
+        jLabelPesquisarPorNTelefone.setBackground(secondary);
+    }//GEN-LAST:event_jLabelPesquisarPorNTelefoneMousePressed
+
+    private void jLabelPesquisarPorNTelefoneMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNTelefoneMouseReleased
+        if(jLabelPesquisarPorNTelefone.getBackground()==secondary){
+            jLabelPesquisarPorNTelefone.setBackground(tertiary);
+        }
+    }//GEN-LAST:event_jLabelPesquisarPorNTelefoneMouseReleased
+
+    private void jLabelPesquisarPorTurmaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorTurmaMouseEntered
+        jLabelPesquisarPorTurma.setBackground(tertiary);
+    }//GEN-LAST:event_jLabelPesquisarPorTurmaMouseEntered
+
+    private void jLabelPesquisarPorTurmaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorTurmaMouseExited
+        jLabelPesquisarPorTurma.setBackground(primary);
+    }//GEN-LAST:event_jLabelPesquisarPorTurmaMouseExited
+
+    private void jLabelPesquisarPorTurmaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorTurmaMousePressed
+        jLabelPesquisarPorTurma.setBackground(secondary);
+    }//GEN-LAST:event_jLabelPesquisarPorTurmaMousePressed
+
+    private void jLabelPesquisarPorTurmaMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorTurmaMouseReleased
+        if(jLabelPesquisarPorTurma.getBackground()==secondary){
+            jLabelPesquisarPorTurma.setBackground(tertiary);
+        }
+    }//GEN-LAST:event_jLabelPesquisarPorTurmaMouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelADD;
@@ -289,12 +419,15 @@ public class personHome extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelDelete;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelOBS;
+    private javax.swing.JLabel jLabelPesquisarPorNTelefone;
+    private javax.swing.JLabel jLabelPesquisarPorNome;
+    private javax.swing.JLabel jLabelPesquisarPorTurma;
     private javax.swing.JLabel jLabelTelefone;
     private javax.swing.JLabel jLabelTurma;
     private javax.swing.JPanel jPanelPersonCRUD;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTablePessoas;
     private javax.swing.JTextArea jTextAreaOBS;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldTelefone;

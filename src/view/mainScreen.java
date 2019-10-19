@@ -11,6 +11,7 @@ public class mainScreen extends javax.swing.JFrame {
     dispositivosHome dispositivosCRUD = new dispositivosHome();
     activityHome activityCRUD = new activityHome(); 
     configuracoes configuracoes = new configuracoes();  
+    historyHome historyHome = new historyHome();
     
     public mainScreen() {
         initComponents();              
@@ -19,19 +20,25 @@ public class mainScreen extends javax.swing.JFrame {
         jLabelDisSelect.setBackground(primary);
         jLabelATISelect.setBackground(primary);
         jLabelCONSelect.setBackground(primary);  
+        internalFramesInstances();
+        themeChanger();                
+        repaintAll();                     
+    }    
+     
+    void internalFramesInstances(){
         jDesktopPaneAbas.add(personCRUD);
         jDesktopPaneAbas.add(dispositivosCRUD);
         jDesktopPaneAbas.add(activityCRUD);
         jDesktopPaneAbas.add(configuracoes);
+        jDesktopPaneAbas.add(historyHome);
         personCRUD.setLocation(-8, -4);
         dispositivosCRUD.setLocation(-8,-4);
         activityCRUD.setLocation(-8,-4);
         configuracoes.setLocation(-8,-4);
-        themeChanger();
-        activityCRUD.themeChanger();        
-        repaintAll();                     
-    }    
-      
+        historyHome.setLocation(-8,-4);
+        //Theme
+        activityCRUD.themeChanger();
+    }
     
     
     @SuppressWarnings("unchecked")
@@ -53,12 +60,16 @@ public class mainScreen extends javax.swing.JFrame {
         jLabelDISPOSITIVOSI = new javax.swing.JLabel();
         jLabelATIVOSI = new javax.swing.JLabel();
         jLabelCONFIGURACOESI = new javax.swing.JLabel();
+        jLabelHistoricoNome = new javax.swing.JLabel();
+        jLabelHistoricoI = new javax.swing.JLabel();
         jPanelSelector = new javax.swing.JPanel();
         jLabelPesSelect = new javax.swing.JLabel();
         jLabelATISelect = new javax.swing.JLabel();
         jLabelDisSelect = new javax.swing.JLabel();
         jLabelHomeSelect = new javax.swing.JLabel();
         jLabelCONSelect = new javax.swing.JLabel();
+        jLabelHISSelect = new javax.swing.JLabel();
+        jLabelTitle = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -131,7 +142,7 @@ public class mainScreen extends javax.swing.JFrame {
         jLabelCONFIGURACOES.setText("CONFIGURAÇÕES");
         jLabelCONFIGURACOES.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelCONFIGURACOES);
-        jLabelCONFIGURACOES.setBounds(63, 405, 211, 32);
+        jLabelCONFIGURACOES.setBounds(63, 465, 211, 32);
 
         jLabelHOMEI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/home_1.png"))); // NOI18N
         jLabelHOMEI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -156,9 +167,21 @@ public class mainScreen extends javax.swing.JFrame {
         jLabelCONFIGURACOESI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/engrenagem.png"))); // NOI18N
         jLabelCONFIGURACOESI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelCONFIGURACOESI);
-        jLabelCONFIGURACOESI.setBounds(10, 400, 40, 40);
+        jLabelCONFIGURACOESI.setBounds(10, 460, 40, 40);
 
-        jPanelSelector.setBackground(configuracoes.primary);
+        jLabelHistoricoNome.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabelHistoricoNome.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelHistoricoNome.setText("HISTÓRICO");
+        jLabelHistoricoNome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jLabelHistoricoNome);
+        jLabelHistoricoNome.setBounds(60, 405, 132, 32);
+
+        jLabelHistoricoI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/historico.png"))); // NOI18N
+        jLabelHistoricoI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(jLabelHistoricoI);
+        jLabelHistoricoI.setBounds(10, 400, 40, 40);
+
+        jPanelSelector.setBackground(primary);
         jPanelSelector.setForeground(new java.awt.Color(204, 255, 51));
         jPanelSelector.setLayout(null);
 
@@ -245,7 +268,29 @@ public class mainScreen extends javax.swing.JFrame {
             }
         });
         jPanelSelector.add(jLabelCONSelect);
-        jLabelCONSelect.setBounds(0, 395, 280, 50);
+        jLabelCONSelect.setBounds(0, 455, 280, 50);
+
+        jLabelHISSelect.setBackground(new java.awt.Color(16, 125, 172));
+        jLabelHISSelect.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelHISSelect.setOpaque(true);
+        jLabelHISSelect.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelHISSelectMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelHISSelectMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelHISSelectMouseExited(evt);
+            }
+        });
+        jPanelSelector.add(jLabelHISSelect);
+        jLabelHISSelect.setBounds(0, 395, 280, 50);
+
+        jLabelTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logoMin.png"))); // NOI18N
+        jLabelTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanelSelector.add(jLabelTitle);
+        jLabelTitle.setBounds(30, 40, 220, 50);
 
         jPanel1.add(jPanelSelector);
         jPanelSelector.setBounds(0, 0, 280, 720);
@@ -274,26 +319,73 @@ public class mainScreen extends javax.swing.JFrame {
             personCRUD.setVisible(true);
             dispositivosCRUD.setVisible(false);
             activityCRUD.setVisible(false);
-            configuracoes.setVisible(false);            
+            configuracoes.setVisible(false); 
+            historyHome.setVisible(false);
+            
+            jLabelHomeSelect.setBackground(primary);
+            jLabelATISelect.setBackground(primary);
+            jLabelCONSelect.setBackground(primary);
+            jLabelDisSelect.setBackground(primary);
+            jLabelPesSelect.setBackground(secondary);
+            jLabelHISSelect.setBackground(primary);
         }
         if (jf==dispositivosCRUD){
             personCRUD.setVisible(false);
             dispositivosCRUD.setVisible(true);
             activityCRUD.setVisible(false);
             configuracoes.setVisible(false);
+            historyHome.setVisible(false);
+            
+            jLabelHomeSelect.setBackground(primary);
+            jLabelATISelect.setBackground(primary);
+            jLabelCONSelect.setBackground(primary);
+            jLabelDisSelect.setBackground(secondary);
+            jLabelPesSelect.setBackground(primary);
+            jLabelHISSelect.setBackground(primary);
         }
         if (jf==activityCRUD){
             personCRUD.setVisible(false);
             dispositivosCRUD.setVisible(false);
             activityCRUD.setVisible(true);
             configuracoes.setVisible(false);
+            historyHome.setVisible(false);
+            
+            jLabelHomeSelect.setBackground(primary);
+            jLabelATISelect.setBackground(secondary);
+            jLabelCONSelect.setBackground(primary);
+            jLabelDisSelect.setBackground(primary);
+            jLabelPesSelect.setBackground(primary);
+            jLabelHISSelect.setBackground(primary);
         }
         if (jf==configuracoes){
             configuracoes.setVisible(true);
             personCRUD.setVisible(false);
             dispositivosCRUD.setVisible(false);
             activityCRUD.setVisible(false);
+            historyHome.setVisible(false);
+            
+            jLabelHomeSelect.setBackground(primary);
+            jLabelATISelect.setBackground(primary);
+            jLabelCONSelect.setBackground(secondary);
+            jLabelDisSelect.setBackground(primary);
+            jLabelPesSelect.setBackground(primary);
+            jLabelHISSelect.setBackground(primary);
         }
+        if (jf==historyHome){
+            historyHome.setVisible(true);
+            configuracoes.setVisible(false);
+            personCRUD.setVisible(false);
+            dispositivosCRUD.setVisible(false);
+            activityCRUD.setVisible(false);
+            
+            jLabelHomeSelect.setBackground(primary);
+            jLabelATISelect.setBackground(primary);
+            jLabelCONSelect.setBackground(primary);
+            jLabelDisSelect.setBackground(primary);
+            jLabelPesSelect.setBackground(primary);
+            jLabelHISSelect.setBackground(secondary);
+        }
+        repaintAll();
     }
     
     private void jLabelHomeSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeSelectMouseClicked
@@ -306,43 +398,19 @@ public class mainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelHomeSelectMouseClicked
 
     private void jLabelPesSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesSelectMouseClicked
-        jLabelHomeSelect.setBackground(primary);
-        jLabelATISelect.setBackground(primary);
-        jLabelCONSelect.setBackground(primary);
-        jLabelDisSelect.setBackground(primary);
-        jLabelPesSelect.setBackground(secondary);
-        setFramesVisible(personCRUD);
-        repaintAll();
+        setFramesVisible(personCRUD);        
     }//GEN-LAST:event_jLabelPesSelectMouseClicked
 
     private void jLabelDisSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDisSelectMouseClicked
-        jLabelHomeSelect.setBackground(primary);
-        jLabelATISelect.setBackground(primary);
-        jLabelCONSelect.setBackground(primary);
-        jLabelDisSelect.setBackground(secondary);
-        jLabelPesSelect.setBackground(primary);
-        setFramesVisible(dispositivosCRUD);
-        repaintAll();
+        setFramesVisible(dispositivosCRUD);        
     }//GEN-LAST:event_jLabelDisSelectMouseClicked
 
     private void jLabelATISelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelATISelectMouseClicked
-        jLabelHomeSelect.setBackground(primary);
-        jLabelATISelect.setBackground(secondary);
-        jLabelCONSelect.setBackground(primary);
-        jLabelDisSelect.setBackground(primary);
-        jLabelPesSelect.setBackground(primary);
-        setFramesVisible(activityCRUD);
-        repaintAll();
+        setFramesVisible(activityCRUD);        
     }//GEN-LAST:event_jLabelATISelectMouseClicked
 
     private void jLabelCONSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCONSelectMouseClicked
-        jLabelHomeSelect.setBackground(primary);
-        jLabelATISelect.setBackground(primary);
-        jLabelCONSelect.setBackground(secondary);
-        jLabelDisSelect.setBackground(primary);
-        jLabelPesSelect.setBackground(primary);
         setFramesVisible(configuracoes);
-        repaintAll();
     }//GEN-LAST:event_jLabelCONSelectMouseClicked
 
     private void jLabelHomeSelectMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeSelectMouseEntered
@@ -418,10 +486,28 @@ public class mainScreen extends javax.swing.JFrame {
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         
     }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jLabelHISSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHISSelectMouseClicked
+       setFramesVisible(historyHome);      
+    }//GEN-LAST:event_jLabelHISSelectMouseClicked
+
+    private void jLabelHISSelectMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHISSelectMouseEntered
+        if (jLabelHISSelect.getBackground()==primary){
+            jLabelHISSelect.setBackground(tertiary);
+        }
+        repaintAll();
+    }//GEN-LAST:event_jLabelHISSelectMouseEntered
+
+    private void jLabelHISSelectMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHISSelectMouseExited
+        if (jLabelHISSelect.getBackground()!=secondary){
+            jLabelHISSelect.setBackground(primary);
+        }
+        repaintAll();
+    }//GEN-LAST:event_jLabelHISSelectMouseExited
     
-    java.awt.Color secondary = configuracoes.secondary;
-    java.awt.Color primary = configuracoes.primary;
-    java.awt.Color tertiary = configuracoes.tertiary;    
+    java.awt.Color secondary = new java.awt.Color(24, 154, 211);
+    java.awt.Color primary = new java.awt.Color(16, 125, 172);
+    java.awt.Color tertiary = new java.awt.Color(113, 199, 236);     
    
     void repaintAll(){          
         jPanelSelector.setVisible(false);
@@ -474,12 +560,16 @@ public class mainScreen extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDISPOSITIVOS;
     private javax.swing.JLabel jLabelDISPOSITIVOSI;
     private javax.swing.JLabel jLabelDisSelect;
+    private javax.swing.JLabel jLabelHISSelect;
     private javax.swing.JLabel jLabelHOME;
     private javax.swing.JLabel jLabelHOMEI;
+    private javax.swing.JLabel jLabelHistoricoI;
+    private javax.swing.JLabel jLabelHistoricoNome;
     private javax.swing.JLabel jLabelHomeSelect;
     private javax.swing.JLabel jLabelPESSOAI;
     private javax.swing.JLabel jLabelPESSOAS;
     private javax.swing.JLabel jLabelPesSelect;
+    private javax.swing.JLabel jLabelTitle;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelMenuBG;

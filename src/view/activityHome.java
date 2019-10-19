@@ -18,7 +18,7 @@ public class activityHome extends javax.swing.JInternalFrame {
         buttonGroupAutomaticEnd = new javax.swing.ButtonGroup();
         jPanelActivityCRUD = new javax.swing.JPanel();
         jScrollPane = new javax.swing.JScrollPane();
-        jTableDispositivos = new javax.swing.JTable();
+        jTableAtividade = new javax.swing.JTable();
         jLabelDelete = new javax.swing.JLabel();
         jLabelADD = new javax.swing.JLabel();
         jLabelAtualizar = new javax.swing.JLabel();
@@ -32,6 +32,8 @@ public class activityHome extends javax.swing.JInternalFrame {
         jRadioButtonSectionEndYes = new javax.swing.JRadioButton();
         jFormattedTextFieldHourLimit = new javax.swing.JFormattedTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jTextFieldUser = new javax.swing.JTextField();
+        jTextFieldUser1 = new javax.swing.JTextField();
 
         setBorder(null);
         setPreferredSize(new java.awt.Dimension(1000, 720));
@@ -43,8 +45,8 @@ public class activityHome extends javax.swing.JInternalFrame {
 
         jScrollPane.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTableDispositivos.setForeground(new java.awt.Color(255, 255, 255));
-        jTableDispositivos.setModel(new javax.swing.table.DefaultTableModel(
+        jTableAtividade.setForeground(new java.awt.Color(255, 255, 255));
+        jTableAtividade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -63,9 +65,9 @@ public class activityHome extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
-        jTableDispositivos.setGridColor(new java.awt.Color(204, 204, 204));
-        jTableDispositivos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane.setViewportView(jTableDispositivos);
+        jTableAtividade.setGridColor(new java.awt.Color(204, 204, 204));
+        jTableAtividade.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane.setViewportView(jTableAtividade);
 
         jPanelActivityCRUD.add(jScrollPane);
         jScrollPane.setBounds(60, 250, 850, 402);
@@ -153,11 +155,11 @@ public class activityHome extends javax.swing.JInternalFrame {
 
         jComboBoxUser.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanelActivityCRUD.add(jComboBoxUser);
-        jComboBoxUser.setBounds(118, 52, 340, 34);
+        jComboBoxUser.setBounds(320, 50, 140, 30);
 
         jComboBoxDispositivo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanelActivityCRUD.add(jComboBoxDispositivo);
-        jComboBoxDispositivo.setBounds(118, 114, 340, 34);
+        jComboBoxDispositivo.setBounds(320, 114, 140, 30);
 
         jLabelUser1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelUser1.setText("Tempo cedido (em horas):");
@@ -168,13 +170,13 @@ public class activityHome extends javax.swing.JInternalFrame {
         jRadioButtonSectionEndNo.setText("Não");
         jRadioButtonSectionEndNo.setEnabled(false);
         jPanelActivityCRUD.add(jRadioButtonSectionEndNo);
-        jRadioButtonSectionEndNo.setBounds(610, 114, 111, 23);
+        jRadioButtonSectionEndNo.setBounds(610, 114, 111, 28);
 
         buttonGroupAutomaticEnd.add(jRadioButtonSectionEndYes);
         jRadioButtonSectionEndYes.setText("Sim");
         jRadioButtonSectionEndYes.setEnabled(false);
         jPanelActivityCRUD.add(jRadioButtonSectionEndYes);
-        jRadioButtonSectionEndYes.setBounds(540, 114, 41, 23);
+        jRadioButtonSectionEndYes.setBounds(540, 114, 54, 28);
 
         try {
             jFormattedTextFieldHourLimit.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("## hora(s)")));
@@ -193,6 +195,19 @@ public class activityHome extends javax.swing.JInternalFrame {
         });
         jPanelActivityCRUD.add(jCheckBox1);
         jCheckBox1.setBounds(540, 44, 60, 40);
+
+        jTextFieldUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTextFieldUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldUserActionPerformed(evt);
+            }
+        });
+        jPanelActivityCRUD.add(jTextFieldUser);
+        jTextFieldUser.setBounds(120, 114, 200, 30);
+
+        jTextFieldUser1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanelActivityCRUD.add(jTextFieldUser1);
+        jTextFieldUser1.setBounds(120, 50, 200, 30);
 
         getContentPane().add(jPanelActivityCRUD);
         jPanelActivityCRUD.setBounds(0, 0, 1000, 720);
@@ -280,6 +295,10 @@ public class activityHome extends javax.swing.JInternalFrame {
         }        
     }//GEN-LAST:event_jCheckBox1MouseClicked
 
+    private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldUserActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupAutomaticEnd;
@@ -298,6 +317,8 @@ public class activityHome extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButtonSectionEndNo;
     private javax.swing.JRadioButton jRadioButtonSectionEndYes;
     private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JTable jTableDispositivos;
+    private javax.swing.JTable jTableAtividade;
+    private javax.swing.JTextField jTextFieldUser;
+    private javax.swing.JTextField jTextFieldUser1;
     // End of variables declaration//GEN-END:variables
 }

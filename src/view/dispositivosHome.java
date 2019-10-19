@@ -28,6 +28,8 @@ public class dispositivosHome extends javax.swing.JInternalFrame {
         jLabelOBS = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaOBS = new javax.swing.JTextArea();
+        jLabelPesquisarPorNome = new javax.swing.JLabel();
+        jLabelPesquisarPorID = new javax.swing.JLabel();
 
         setBorder(null);
         setPreferredSize(new java.awt.Dimension(1000, 720));
@@ -141,6 +143,46 @@ public class dispositivosHome extends javax.swing.JInternalFrame {
         jTextAreaOBS.setPreferredSize(new java.awt.Dimension(220, 50));
         jScrollPane2.setViewportView(jTextAreaOBS);
 
+        jLabelPesquisarPorNome.setBackground(new java.awt.Color(16, 125, 172));
+        jLabelPesquisarPorNome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPesquisarPorNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
+        jLabelPesquisarPorNome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelPesquisarPorNome.setOpaque(true);
+        jLabelPesquisarPorNome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNomeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNomeMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNomeMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNomeMouseReleased(evt);
+            }
+        });
+
+        jLabelPesquisarPorID.setBackground(new java.awt.Color(16, 125, 172));
+        jLabelPesquisarPorID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPesquisarPorID.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
+        jLabelPesquisarPorID.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelPesquisarPorID.setOpaque(true);
+        jLabelPesquisarPorID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorIDMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorIDMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorIDMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorIDMouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelDispositivosCRUDLayout = new javax.swing.GroupLayout(jPanelDispositivosCRUD);
         jPanelDispositivosCRUD.setLayout(jPanelDispositivosCRUDLayout);
         jPanelDispositivosCRUDLayout.setHorizontalGroup(
@@ -164,15 +206,21 @@ public class dispositivosHome extends javax.swing.JInternalFrame {
                                 .addGroup(jPanelDispositivosCRUDLayout.createSequentialGroup()
                                     .addGap(118, 118, 118)
                                     .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(80, 80, 80)))
+                                        .addComponent(jLabelTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanelDispositivosCRUDLayout.createSequentialGroup()
+                                            .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabelPesquisarPorID)))
+                                    .addGap(44, 44, 44)))
                             .addGroup(jPanelDispositivosCRUDLayout.createSequentialGroup()
                                 .addGap(118, 118, 118)
                                 .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabelNome, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(80, 80, 80)))
+                                    .addGroup(jPanelDispositivosCRUDLayout.createSequentialGroup()
+                                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabelPesquisarPorNome)))
+                                .addGap(44, 44, 44)))
                         .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelOBS, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -188,13 +236,17 @@ public class dispositivosHome extends javax.swing.JInternalFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDispositivosCRUDLayout.createSequentialGroup()
-                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelPesquisarPorNome))
                         .addGap(20, 20, 20)
                         .addComponent(jLabelTelefone)
                         .addGap(10, 10, 10)
-                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelPesquisarPorID)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGap(20, 20, 20)
                 .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDispositivosCRUDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelADD, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,6 +320,38 @@ public class dispositivosHome extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jLabelDeleteMouseReleased
 
+    private void jLabelPesquisarPorNomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelPesquisarPorNomeMouseEntered
+
+    private void jLabelPesquisarPorNomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelPesquisarPorNomeMouseExited
+
+    private void jLabelPesquisarPorNomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelPesquisarPorNomeMousePressed
+
+    private void jLabelPesquisarPorNomeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelPesquisarPorNomeMouseReleased
+
+    private void jLabelPesquisarPorIDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorIDMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelPesquisarPorIDMouseEntered
+
+    private void jLabelPesquisarPorIDMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorIDMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelPesquisarPorIDMouseExited
+
+    private void jLabelPesquisarPorIDMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorIDMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelPesquisarPorIDMousePressed
+
+    private void jLabelPesquisarPorIDMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorIDMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelPesquisarPorIDMouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelADD;
@@ -275,6 +359,8 @@ public class dispositivosHome extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelDelete;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelOBS;
+    private javax.swing.JLabel jLabelPesquisarPorID;
+    private javax.swing.JLabel jLabelPesquisarPorNome;
     private javax.swing.JLabel jLabelTelefone;
     private javax.swing.JPanel jPanelDispositivosCRUD;
     private javax.swing.JScrollPane jScrollPane;
