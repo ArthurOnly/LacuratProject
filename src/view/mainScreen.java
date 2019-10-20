@@ -12,16 +12,13 @@ public class mainScreen extends javax.swing.JFrame {
     activityHome activityCRUD = new activityHome(); 
     configuracoes configuracoes = new configuracoes();  
     historyHome historyHome = new historyHome();
+    Home home = new Home();
     
     public mainScreen() {
-        initComponents();              
-        jLabelHomeSelect.setBackground(secondary);
-        jLabelPesSelect.setBackground(primary);
-        jLabelDisSelect.setBackground(primary);
-        jLabelATISelect.setBackground(primary);
-        jLabelCONSelect.setBackground(primary);  
+        initComponents();             
         internalFramesInstances();
-        themeChanger();                
+        themeChanger(); 
+        setFramesVisible(home);
         repaintAll();                     
     }    
      
@@ -31,11 +28,13 @@ public class mainScreen extends javax.swing.JFrame {
         jDesktopPaneAbas.add(activityCRUD);
         jDesktopPaneAbas.add(configuracoes);
         jDesktopPaneAbas.add(historyHome);
+        jDesktopPaneAbas.add(home);
         personCRUD.setLocation(-8, -4);
         dispositivosCRUD.setLocation(-8,-4);
         activityCRUD.setLocation(-8,-4);
         configuracoes.setLocation(-8,-4);
         historyHome.setLocation(-8,-4);
+        home.setLocation(-8,-4);
         //Theme
         activityCRUD.themeChanger();
     }
@@ -311,7 +310,8 @@ public class mainScreen extends javax.swing.JFrame {
     void themeChanger(){
         activityCRUD.primary=this.primary;
         activityCRUD.secondary=this.secondary;
-        activityCRUD.tertiary=this.tertiary;        
+        activityCRUD.tertiary=this.tertiary; 
+        activityCRUD.themeChanger();
     }
     
     void setFramesVisible(JInternalFrame jf){
@@ -321,6 +321,7 @@ public class mainScreen extends javax.swing.JFrame {
             activityCRUD.setVisible(false);
             configuracoes.setVisible(false); 
             historyHome.setVisible(false);
+            home.setVisible(false);
             
             jLabelHomeSelect.setBackground(primary);
             jLabelATISelect.setBackground(primary);
@@ -335,6 +336,7 @@ public class mainScreen extends javax.swing.JFrame {
             activityCRUD.setVisible(false);
             configuracoes.setVisible(false);
             historyHome.setVisible(false);
+            home.setVisible(false);
             
             jLabelHomeSelect.setBackground(primary);
             jLabelATISelect.setBackground(primary);
@@ -349,6 +351,7 @@ public class mainScreen extends javax.swing.JFrame {
             activityCRUD.setVisible(true);
             configuracoes.setVisible(false);
             historyHome.setVisible(false);
+            home.setVisible(false);
             
             jLabelHomeSelect.setBackground(primary);
             jLabelATISelect.setBackground(secondary);
@@ -363,6 +366,7 @@ public class mainScreen extends javax.swing.JFrame {
             dispositivosCRUD.setVisible(false);
             activityCRUD.setVisible(false);
             historyHome.setVisible(false);
+            home.setVisible(false);
             
             jLabelHomeSelect.setBackground(primary);
             jLabelATISelect.setBackground(primary);
@@ -377,6 +381,7 @@ public class mainScreen extends javax.swing.JFrame {
             personCRUD.setVisible(false);
             dispositivosCRUD.setVisible(false);
             activityCRUD.setVisible(false);
+            home.setVisible(false);
             
             jLabelHomeSelect.setBackground(primary);
             jLabelATISelect.setBackground(primary);
@@ -385,15 +390,26 @@ public class mainScreen extends javax.swing.JFrame {
             jLabelPesSelect.setBackground(primary);
             jLabelHISSelect.setBackground(secondary);
         }
+        if (jf==home){
+            home.setVisible(true);
+            historyHome.setVisible(false);
+            configuracoes.setVisible(false);
+            personCRUD.setVisible(false);
+            dispositivosCRUD.setVisible(false);
+            activityCRUD.setVisible(false);
+            
+            jLabelHomeSelect.setBackground(secondary);
+            jLabelATISelect.setBackground(primary);
+            jLabelCONSelect.setBackground(primary);
+            jLabelDisSelect.setBackground(primary);
+            jLabelPesSelect.setBackground(primary);
+            jLabelHISSelect.setBackground(primary);
+        }
         repaintAll();
     }
     
     private void jLabelHomeSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeSelectMouseClicked
-        jLabelHomeSelect.setBackground(secondary);
-        jLabelATISelect.setBackground(primary);
-        jLabelCONSelect.setBackground(primary);
-        jLabelDisSelect.setBackground(primary);
-        jLabelPesSelect.setBackground(primary);        
+        setFramesVisible(home);        
         repaintAll();
     }//GEN-LAST:event_jLabelHomeSelectMouseClicked
 

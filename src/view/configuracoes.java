@@ -9,6 +9,7 @@ public class configuracoes extends javax.swing.JInternalFrame {
     public configuracoes() {
         initComponents();        
         ((BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        buttonGroupTipoColor.
     }
 
     
@@ -16,7 +17,6 @@ public class configuracoes extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupTipoColor = new javax.swing.ButtonGroup();
         buttonGroupCoresDefault = new javax.swing.ButtonGroup();
         jPanelConfig = new javax.swing.JPanel();
         jLabelAplyColors = new javax.swing.JLabel();
@@ -50,12 +50,11 @@ public class configuracoes extends javax.swing.JInternalFrame {
         jTextFieldRed8 = new javax.swing.JTextField();
         jLabelPersonalizedTheme14 = new javax.swing.JLabel();
         jLabelPersonalizedTheme15 = new javax.swing.JLabel();
-        jRadioButtonPreDef = new javax.swing.JRadioButton();
-        jRadioButtonPers = new javax.swing.JRadioButton();
         jRadioButtonPurple = new javax.swing.JRadioButton();
         jRadioButtonDefault = new javax.swing.JRadioButton();
         jRadioButtonYellow = new javax.swing.JRadioButton();
         jRadioButtonRed = new javax.swing.JRadioButton();
+        jLabelPersonalizedTheme16 = new javax.swing.JLabel();
 
         setBorder(null);
         setPreferredSize(new java.awt.Dimension(1000, 720));
@@ -129,16 +128,20 @@ public class configuracoes extends javax.swing.JInternalFrame {
         jLabelPersonalizedTheme5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelPersonalizedTheme5.setText("Senha atual:");
         jPanelConfig.add(jLabelPersonalizedTheme5);
-        jLabelPersonalizedTheme5.setBounds(120, 450, 98, 22);
+        jLabelPersonalizedTheme5.setBounds(120, 460, 98, 22);
 
         jLabelPersonalizedTheme6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelPersonalizedTheme6.setText("Nova senha:");
         jPanelConfig.add(jLabelPersonalizedTheme6);
-        jLabelPersonalizedTheme6.setBounds(120, 490, 98, 22);
+        jLabelPersonalizedTheme6.setBounds(120, 500, 98, 22);
+
+        jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanelConfig.add(jPasswordField1);
-        jPasswordField1.setBounds(220, 490, 320, 20);
+        jPasswordField1.setBounds(220, 490, 320, 30);
+
+        jPasswordField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanelConfig.add(jPasswordField2);
-        jPasswordField2.setBounds(220, 450, 320, 20);
+        jPasswordField2.setBounds(220, 450, 320, 30);
 
         jLabelAplyPassword.setBackground(new java.awt.Color(16, 125, 172));
         jLabelAplyPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -191,9 +194,9 @@ public class configuracoes extends javax.swing.JInternalFrame {
         jLabelPersonalizedTheme10.setBounds(120, 80, 299, 22);
 
         jLabelPersonalizedTheme11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelPersonalizedTheme11.setText("Cor primária");
+        jLabelPersonalizedTheme11.setText("Temas prontos");
         jPanelConfig.add(jLabelPersonalizedTheme11);
-        jLabelPersonalizedTheme11.setBounds(190, 120, 110, 22);
+        jLabelPersonalizedTheme11.setBounds(430, 120, 130, 22);
 
         jLabelPersonalizedTheme12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelPersonalizedTheme12.setText("G");
@@ -221,35 +224,30 @@ public class configuracoes extends javax.swing.JInternalFrame {
         jPanelConfig.add(jLabelPersonalizedTheme15);
         jLabelPersonalizedTheme15.setBounds(190, 280, 110, 22);
 
-        buttonGroupTipoColor.add(jRadioButtonPreDef);
-        jRadioButtonPreDef.setText("Pré-definido");
-        jPanelConfig.add(jRadioButtonPreDef);
-        jRadioButtonPreDef.setBounds(450, 360, 130, 23);
-
-        buttonGroupTipoColor.add(jRadioButtonPers);
-        jRadioButtonPers.setText("Personalizado");
-        jPanelConfig.add(jRadioButtonPers);
-        jRadioButtonPers.setBounds(190, 360, 120, 23);
-
         buttonGroupCoresDefault.add(jRadioButtonPurple);
         jRadioButtonPurple.setText("Roxo");
         jPanelConfig.add(jRadioButtonPurple);
-        jRadioButtonPurple.setBounds(450, 240, 93, 23);
+        jRadioButtonPurple.setBounds(450, 240, 93, 28);
 
         buttonGroupCoresDefault.add(jRadioButtonDefault);
-        jRadioButtonDefault.setText("Padrão");
+        jRadioButtonDefault.setText("Azul");
         jPanelConfig.add(jRadioButtonDefault);
-        jRadioButtonDefault.setBounds(450, 150, 90, 23);
+        jRadioButtonDefault.setBounds(450, 150, 90, 28);
 
         buttonGroupCoresDefault.add(jRadioButtonYellow);
         jRadioButtonYellow.setText("Amarelo");
         jPanelConfig.add(jRadioButtonYellow);
-        jRadioButtonYellow.setBounds(450, 180, 93, 23);
+        jRadioButtonYellow.setBounds(450, 180, 93, 28);
 
         buttonGroupCoresDefault.add(jRadioButtonRed);
         jRadioButtonRed.setText("Vermelho");
         jPanelConfig.add(jRadioButtonRed);
-        jRadioButtonRed.setBounds(450, 210, 93, 23);
+        jRadioButtonRed.setBounds(450, 210, 93, 28);
+
+        jLabelPersonalizedTheme16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelPersonalizedTheme16.setText("Cor primária");
+        jPanelConfig.add(jLabelPersonalizedTheme16);
+        jLabelPersonalizedTheme16.setBounds(190, 120, 110, 22);
 
         getContentPane().add(jPanelConfig);
         jPanelConfig.setBounds(0, 0, 1000, 720);
@@ -316,7 +314,6 @@ public class configuracoes extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupCoresDefault;
-    private javax.swing.ButtonGroup buttonGroupTipoColor;
     private javax.swing.JLabel jLabelAplyColors;
     private javax.swing.JLabel jLabelAplyPassword;
     private javax.swing.JLabel jLabelNome;
@@ -328,6 +325,7 @@ public class configuracoes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelPersonalizedTheme13;
     private javax.swing.JLabel jLabelPersonalizedTheme14;
     private javax.swing.JLabel jLabelPersonalizedTheme15;
+    private javax.swing.JLabel jLabelPersonalizedTheme16;
     private javax.swing.JLabel jLabelPersonalizedTheme2;
     private javax.swing.JLabel jLabelPersonalizedTheme3;
     private javax.swing.JLabel jLabelPersonalizedTheme4;
@@ -340,8 +338,6 @@ public class configuracoes extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JRadioButton jRadioButtonDefault;
-    private javax.swing.JRadioButton jRadioButtonPers;
-    private javax.swing.JRadioButton jRadioButtonPreDef;
     private javax.swing.JRadioButton jRadioButtonPurple;
     private javax.swing.JRadioButton jRadioButtonRed;
     private javax.swing.JRadioButton jRadioButtonYellow;
