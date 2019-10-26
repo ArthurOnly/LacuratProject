@@ -7,13 +7,15 @@ public class usuario {
     String turma;
     String observações;
     String ID;
+    private boolean status;
     
-    public usuario(String nome, String telefone, String turma, String observações, String ID) {
+    public usuario(String nome, String telefone, String turma, String observações, String ID, boolean status) {
         this.nome = nome;
         this.telefone = telefone;
         this.turma = turma;
         this.observações = observações;
         this.ID = ID;
+        this.status = status;
     }
     
     public String getNome() {
@@ -55,5 +57,13 @@ public class usuario {
     public void setID(String ID) {
         this.ID = ID;
     }
-        
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }    
+    
 }

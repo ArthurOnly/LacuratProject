@@ -1,13 +1,17 @@
 package view;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public class personHome extends javax.swing.JInternalFrame {
 
-   
+    DefaultTableModel dtmUsers;
     public personHome() {
         initComponents();
         ((BasicInternalFrameUI)this.getUI()).setNorthPane(null); 
+        dtmUsers = (DefaultTableModel) jTablePessoas.getModel(); 
+        jTablePessoas.setRowSorter(new TableRowSorter(dtmUsers));
     }
 
     
@@ -46,17 +50,17 @@ public class personHome extends javax.swing.JInternalFrame {
         jTablePessoas.setForeground(new java.awt.Color(255, 255, 255));
         jTablePessoas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Turma", "Telefone", "Status"
+                "Nome", "Turma", "Telefone", "Status", "ID"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -427,7 +431,7 @@ public class personHome extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanelPersonCRUD;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTablePessoas;
+    public javax.swing.JTable jTablePessoas;
     private javax.swing.JTextArea jTextAreaOBS;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldTelefone;

@@ -4,6 +4,10 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import model.functionScripts;
+import controller.interacFunctions;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class mainScreen extends javax.swing.JFrame {
 
@@ -12,15 +16,17 @@ public class mainScreen extends javax.swing.JFrame {
     activityHome activityCRUD = new activityHome(); 
     configuracoes configuracoes = new configuracoes();  
     historyHome historyHome = new historyHome();
-    Home home = new Home();
+    Home home = new Home();   
+    interacFunctions bdfunctions = new interacFunctions();    
     
     public mainScreen() {
         initComponents();             
         internalFramesInstances();
         themeChanger(); 
         setFramesVisible(home);
-        repaintAll();                     
-    }    
+        repaintAll();              
+    }      
+    
      
     void internalFramesInstances(){
         jDesktopPaneAbas.add(personCRUD);
@@ -409,12 +415,15 @@ public class mainScreen extends javax.swing.JFrame {
     }
     
     private void jLabelHomeSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeSelectMouseClicked
-        setFramesVisible(home);        
+        setFramesVisible(home);         
+        bdfunctions.getSelect("usuarios");
+        
         repaintAll();
     }//GEN-LAST:event_jLabelHomeSelectMouseClicked
 
     private void jLabelPesSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesSelectMouseClicked
         setFramesVisible(personCRUD);        
+        bdfunctions.parseUserToTable(bdfunctions.usuarios, personCRUD.dtmUsers, "usuarios");
     }//GEN-LAST:event_jLabelPesSelectMouseClicked
 
     private void jLabelDisSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDisSelectMouseClicked

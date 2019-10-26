@@ -8,8 +8,7 @@ public class configuracoes extends javax.swing.JInternalFrame {
    
     public configuracoes() {
         initComponents();        
-        ((BasicInternalFrameUI)this.getUI()).setNorthPane(null);
-        buttonGroupTipoColor.
+        ((BasicInternalFrameUI)this.getUI()).setNorthPane(null);        
     }
 
     
@@ -301,14 +300,7 @@ public class configuracoes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabelAplyPasswordMouseReleased
 
     private void jLabelAplyColorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAplyColorsMouseClicked
-        if (buttonGroupTipoColor.isSelected(jRadioButtonPreDef.getModel())){
-            if (buttonGroupCoresDefault.isSelected(jRadioButtonYellow.getModel())){
-                /*primary = new java.awt.Color(255, 255, 0);
-                secondary = new java.awt.Color(204, 204, 0);
-                tertiary = new java.awt.Color(255, 255, 153);  */
-                //Adcicionar cor aq
-            }
-        }
+        
     }//GEN-LAST:event_jLabelAplyColorsMouseClicked
 
 
