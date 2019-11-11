@@ -6,6 +6,8 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import model.functionScripts;
 import controller.interacFunctions;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,14 +19,26 @@ public class mainScreen extends javax.swing.JFrame {
     configuracoes configuracoes = new configuracoes();  
     historyHome historyHome = new historyHome();
     Home home = new Home();   
-    interacFunctions bdfunctions = new interacFunctions();    
+    interacFunctions bdfunctions = new interacFunctions();
+    interacFunctions bdThr = new interacFunctions();
     
     public mainScreen() {
-        initComponents();             
-        internalFramesInstances();
-        themeChanger(); 
-        setFramesVisible(home);
-        repaintAll();              
+        String input = JOptionPane.showInputDialog("Senha")+"";
+        try {
+            if (input.equals(bdfunctions.getSenha())){
+                initComponents();
+                internalFramesInstances();
+                themeChanger();
+                setFramesVisible(home);
+                repaintAll();
+                verificationEnding();
+            } else{
+                System.exit(0);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(mainScreen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }      
     
      
@@ -45,7 +59,52 @@ public class mainScreen extends javax.swing.JFrame {
         activityCRUD.themeChanger();
     }
     
-    
+    void verificationEnding(){
+        new Thread(){
+            public void run(){
+                while(true){
+                    bdThr.reloadSelect("atividade");
+                    if (bdThr.atividades.size()>0){
+                        for (int i=0; i<bdThr.atividades.size();i++){                            
+                            if(bdThr.atividades.get(i).isAutomatic() && bdThr.atividades.get(i).verifyEnd()){
+                                bdThr.reloadSelect("dispositivos");
+                                double actual=0;
+                                for (int b=0;b<bdThr.dispositivos.size();b++){
+                                    if (bdThr.dispositivos.get(b).getID().equalsIgnoreCase(bdThr.atividades.get(i).getDispositovID())){
+                                        actual+=bdThr.dispositivos.get(b).getTempoDeUso();
+                                    }
+                                }
+                                String[] dadosEnv =  new String[2];
+                                String[] dadosEnvHisotry =  new String[3];
+                                try {
+                                    double a = new Date().getTime()-bdThr.atividades.get(i).convertDate(bdThr.atividades.get(i).getDataFinal()).getTime();
+                                    dadosEnv[0]=(bdThr.atividades.get(i).minutesParsed(a)+actual)+"";
+                                } catch (ParseException ex) {
+                                    Logger.getLogger(mainScreen.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                dadosEnv[1]=bdThr.atividades.get(i).getDispositovID();
+                                bdThr.updateValue("dispositivoTime", dadosEnv);                                
+                                dispositivosCRUD.bdfunctions.reloadSelect("dispositivos");
+                                dispositivosCRUD.bdfunctions.parseToTable(dispositivosCRUD.bdfunctions.dispositivos, dispositivosCRUD.dtmDisp, "dispositivos");
+                                activityCRUD.bdfunctions.reloadSelect("atividade");
+                                activityCRUD.bdfunctions.parseToTable(activityCRUD.bdfunctions.atividades, activityCRUD.dtmAtv, "atividades");
+                                dadosEnvHisotry[0]="'"+bdThr.atividades.get(i).getUsuario()+"'";
+                                dadosEnvHisotry[1]="'"+bdThr.atividades.get(i).getDispositivo()+"'";
+                                dadosEnvHisotry[2]="'"+bdThr.atividades.get(i).dataToString(bdThr.atividades.get(i).getDataInicial())+" à "+bdThr.atividades.get(i).dataToString(bdThr.atividades.get(i).getDataFinal())+"'";
+                                bdThr.insertValue("historico", dadosEnvHisotry);
+                                bdThr.deletSelected(bdThr.atividades.get(i));                                
+                            }                            
+                        }
+                    }
+                    try {
+                        Thread.sleep(10);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(mainScreen.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }                
+            }
+        }.start();
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -81,6 +140,11 @@ public class mainScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(1280, 720));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jDesktopPaneAbas.setPreferredSize(new java.awt.Dimension(1000, 720));
@@ -317,17 +381,24 @@ public class mainScreen extends javax.swing.JFrame {
         activityCRUD.primary=this.primary;
         activityCRUD.secondary=this.secondary;
         activityCRUD.tertiary=this.tertiary; 
-        activityCRUD.themeChanger();
+        activityCRUD.themeChanger();   
+        home.primary=this.primary;
+        home.secondary=this.secondary;
+        home.tertiary=this.tertiary; 
+        home.themeChanger();  
     }
     
     void setFramesVisible(JInternalFrame jf){
         if (jf==personCRUD){
+            bdfunctions.reloadSelect("usuarios");
+            personCRUD.bdfunctions.usuarios=bdfunctions.usuarios;
+            personCRUD.bdfunctions.parseToTable(personCRUD.bdfunctions.usuarios, personCRUD.dtmUsers, "usuarios");
             personCRUD.setVisible(true);
             dispositivosCRUD.setVisible(false);
             activityCRUD.setVisible(false);
             configuracoes.setVisible(false); 
             historyHome.setVisible(false);
-            home.setVisible(false);
+            home.setVisible(false);            
             
             jLabelHomeSelect.setBackground(primary);
             jLabelATISelect.setBackground(primary);
@@ -337,6 +408,9 @@ public class mainScreen extends javax.swing.JFrame {
             jLabelHISSelect.setBackground(primary);
         }
         if (jf==dispositivosCRUD){
+            bdfunctions.reloadSelect("dispositivos");
+            dispositivosCRUD.bdfunctions.dispositivos=bdfunctions.dispositivos;
+            personCRUD.bdfunctions.parseToTable(dispositivosCRUD.bdfunctions.dispositivos, dispositivosCRUD.dtmDisp, "dispositivos");
             personCRUD.setVisible(false);
             dispositivosCRUD.setVisible(true);
             activityCRUD.setVisible(false);
@@ -415,15 +489,12 @@ public class mainScreen extends javax.swing.JFrame {
     }
     
     private void jLabelHomeSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelHomeSelectMouseClicked
-        setFramesVisible(home);         
-        bdfunctions.getSelect("usuarios");
-        
+        setFramesVisible(home);               
         repaintAll();
     }//GEN-LAST:event_jLabelHomeSelectMouseClicked
 
     private void jLabelPesSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesSelectMouseClicked
-        setFramesVisible(personCRUD);        
-        bdfunctions.parseUserToTable(bdfunctions.usuarios, personCRUD.dtmUsers, "usuarios");
+        setFramesVisible(personCRUD);       
     }//GEN-LAST:event_jLabelPesSelectMouseClicked
 
     private void jLabelDisSelectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDisSelectMouseClicked
@@ -529,7 +600,11 @@ public class mainScreen extends javax.swing.JFrame {
         }
         repaintAll();
     }//GEN-LAST:event_jLabelHISSelectMouseExited
-    
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formComponentShown
+    int cores[] = {};
     java.awt.Color secondary = new java.awt.Color(24, 154, 211);
     java.awt.Color primary = new java.awt.Color(16, 125, 172);
     java.awt.Color tertiary = new java.awt.Color(113, 199, 236);     

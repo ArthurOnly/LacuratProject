@@ -1,13 +1,18 @@
 package view;
 
+import controller.interacFunctions;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 public class historyHome extends javax.swing.JInternalFrame {
 
-   
+    DefaultTableModel dtmHist;
     public historyHome() {
         initComponents();        
         ((BasicInternalFrameUI)this.getUI()).setNorthPane(null);
+        dtmHist = (DefaultTableModel) jTableHistorico.getModel(); 
+        jTableHistorico.setRowSorter(new TableRowSorter(dtmHist));
     }
 
     
@@ -22,13 +27,18 @@ public class historyHome extends javax.swing.JInternalFrame {
         jLabelDelete = new javax.swing.JLabel();
         jLabelUser = new javax.swing.JLabel();
         jLabelDispositivo = new javax.swing.JLabel();
-        jComboBoxUser = new javax.swing.JComboBox();
-        jComboBoxDispositivo = new javax.swing.JComboBox();
         jTextFieldUser = new javax.swing.JTextField();
         jTextFieldUser1 = new javax.swing.JTextField();
+        jLabelPesquisarPorNome = new javax.swing.JLabel();
+        jLabelPesquisarPorNome1 = new javax.swing.JLabel();
 
         setBorder(null);
         setPreferredSize(new java.awt.Dimension(1000, 720));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jPanelActivityCRUD.setBackground(new java.awt.Color(255, 255, 255));
@@ -37,7 +47,7 @@ public class historyHome extends javax.swing.JInternalFrame {
 
         jScrollPane.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTableHistorico.setForeground(new java.awt.Color(255, 255, 255));
+        jTableHistorico.setForeground(new java.awt.Color(0, 0, 0));
         jTableHistorico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -89,20 +99,12 @@ public class historyHome extends javax.swing.JInternalFrame {
         jLabelUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelUser.setText("Usuário:");
         jPanelActivityCRUD.add(jLabelUser);
-        jLabelUser.setBounds(280, 20, 65, 22);
+        jLabelUser.setBounds(300, 20, 65, 22);
 
         jLabelDispositivo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelDispositivo.setText("Dispositivo:");
         jPanelActivityCRUD.add(jLabelDispositivo);
-        jLabelDispositivo.setBounds(280, 90, 119, 22);
-
-        jComboBoxUser.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelActivityCRUD.add(jComboBoxUser);
-        jComboBoxUser.setBounds(580, 50, 180, 30);
-
-        jComboBoxDispositivo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelActivityCRUD.add(jComboBoxDispositivo);
-        jComboBoxDispositivo.setBounds(580, 110, 180, 30);
+        jLabelDispositivo.setBounds(300, 90, 119, 22);
 
         jTextFieldUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTextFieldUser.addActionListener(new java.awt.event.ActionListener() {
@@ -111,11 +113,65 @@ public class historyHome extends javax.swing.JInternalFrame {
             }
         });
         jPanelActivityCRUD.add(jTextFieldUser);
-        jTextFieldUser.setBounds(280, 110, 300, 30);
+        jTextFieldUser.setBounds(300, 110, 300, 35);
 
         jTextFieldUser1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jPanelActivityCRUD.add(jTextFieldUser1);
-        jTextFieldUser1.setBounds(280, 50, 300, 30);
+        jTextFieldUser1.setBounds(300, 50, 300, 35);
+
+        jLabelPesquisarPorNome.setBackground(new java.awt.Color(16, 125, 172));
+        jLabelPesquisarPorNome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPesquisarPorNome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
+        jLabelPesquisarPorNome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelPesquisarPorNome.setMaximumSize(new java.awt.Dimension(35, 35));
+        jLabelPesquisarPorNome.setOpaque(true);
+        jLabelPesquisarPorNome.setPreferredSize(new java.awt.Dimension(35, 35));
+        jLabelPesquisarPorNome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNomeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNomeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNomeMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNomeMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNomeMouseReleased(evt);
+            }
+        });
+        jPanelActivityCRUD.add(jLabelPesquisarPorNome);
+        jLabelPesquisarPorNome.setBounds(610, 50, 35, 35);
+
+        jLabelPesquisarPorNome1.setBackground(new java.awt.Color(16, 125, 172));
+        jLabelPesquisarPorNome1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPesquisarPorNome1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
+        jLabelPesquisarPorNome1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelPesquisarPorNome1.setMaximumSize(new java.awt.Dimension(35, 35));
+        jLabelPesquisarPorNome1.setOpaque(true);
+        jLabelPesquisarPorNome1.setPreferredSize(new java.awt.Dimension(35, 35));
+        jLabelPesquisarPorNome1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNome1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNome1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNome1MouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNome1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabelPesquisarPorNome1MouseReleased(evt);
+            }
+        });
+        jPanelActivityCRUD.add(jLabelPesquisarPorNome1);
+        jLabelPesquisarPorNome1.setBounds(610, 110, 35, 35);
 
         getContentPane().add(jPanelActivityCRUD);
         jPanelActivityCRUD.setBounds(0, 0, 1000, 720);
@@ -126,6 +182,8 @@ public class historyHome extends javax.swing.JInternalFrame {
     java.awt.Color secondary;
     java.awt.Color primary;
     java.awt.Color tertiary;
+    
+    interacFunctions bdfunctions = new interacFunctions();
     
     public void themeChanger(){        
         jLabelDelete.setBackground(primary);
@@ -153,17 +211,68 @@ public class historyHome extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUserActionPerformed
 
+    private void jLabelPesquisarPorNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseClicked
+        //bdfunctions.reloadSelect("dispositivos", "nome LIKE '"+jTextFieldNome.getText()+"%'");
+        //bdfunctions.parseToTable(bdfunctions.usuarios, dtmDisp, "dispositivos");
+    }//GEN-LAST:event_jLabelPesquisarPorNomeMouseClicked
+
+    private void jLabelPesquisarPorNomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseEntered
+        jLabelPesquisarPorNome.setBackground(tertiary);
+    }//GEN-LAST:event_jLabelPesquisarPorNomeMouseEntered
+
+    private void jLabelPesquisarPorNomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseExited
+        jLabelPesquisarPorNome.setBackground(primary);
+    }//GEN-LAST:event_jLabelPesquisarPorNomeMouseExited
+
+    private void jLabelPesquisarPorNomeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMousePressed
+        jLabelPesquisarPorNome.setBackground(secondary);
+    }//GEN-LAST:event_jLabelPesquisarPorNomeMousePressed
+
+    private void jLabelPesquisarPorNomeMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseReleased
+        if(jLabelPesquisarPorNome.getBackground()==secondary){
+            jLabelPesquisarPorNome.setBackground(tertiary);
+        }
+    }//GEN-LAST:event_jLabelPesquisarPorNomeMouseReleased
+
+    private void jLabelPesquisarPorNome1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNome1MouseClicked
+        //bdfunctions.reloadSelect("dispositivos", "nome LIKE '"+jTextFieldNome.getText()+"%'");
+        //bdfunctions.parseToTable(bdfunctions.usuarios, dtmDisp, "dispositivos");
+    }//GEN-LAST:event_jLabelPesquisarPorNome1MouseClicked
+
+    private void jLabelPesquisarPorNome1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNome1MouseEntered
+        jLabelPesquisarPorNome.setBackground(tertiary);
+    }//GEN-LAST:event_jLabelPesquisarPorNome1MouseEntered
+
+    private void jLabelPesquisarPorNome1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNome1MouseExited
+        jLabelPesquisarPorNome.setBackground(primary);
+    }//GEN-LAST:event_jLabelPesquisarPorNome1MouseExited
+
+    private void jLabelPesquisarPorNome1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNome1MousePressed
+        jLabelPesquisarPorNome.setBackground(secondary);
+    }//GEN-LAST:event_jLabelPesquisarPorNome1MousePressed
+
+    private void jLabelPesquisarPorNome1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNome1MouseReleased
+        if(jLabelPesquisarPorNome.getBackground()==secondary){
+            jLabelPesquisarPorNome.setBackground(tertiary);
+        }
+    }//GEN-LAST:event_jLabelPesquisarPorNome1MouseReleased
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        bdfunctions.reloadSelect("historico");
+        bdfunctions.parseToTable(bdfunctions.historico, dtmHist, "historico");        
+    }//GEN-LAST:event_formComponentShown
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupAutomaticEnd;
-    private javax.swing.JComboBox jComboBoxDispositivo;
-    private javax.swing.JComboBox jComboBoxUser;
     public javax.swing.JLabel jLabelDelete;
     private javax.swing.JLabel jLabelDispositivo;
+    private javax.swing.JLabel jLabelPesquisarPorNome;
+    private javax.swing.JLabel jLabelPesquisarPorNome1;
     private javax.swing.JLabel jLabelUser;
     private javax.swing.JPanel jPanelActivityCRUD;
     private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JTable jTableHistorico;
+    public javax.swing.JTable jTableHistorico;
     private javax.swing.JTextField jTextFieldUser;
     private javax.swing.JTextField jTextFieldUser1;
     // End of variables declaration//GEN-END:variables

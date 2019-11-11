@@ -1,5 +1,6 @@
 package view;
 
+import controller.interacFunctions;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -21,42 +22,34 @@ public class configuracoes extends javax.swing.JInternalFrame {
         jLabelAplyColors = new javax.swing.JLabel();
         jLabelNome = new javax.swing.JLabel();
         jLabelPersonalizedTheme = new javax.swing.JLabel();
-        jTextFieldRed = new javax.swing.JTextField();
         jLabelPersonalizedTheme1 = new javax.swing.JLabel();
-        jTextFieldRed1 = new javax.swing.JTextField();
-        jLabelPersonalizedTheme2 = new javax.swing.JLabel();
-        jTextFieldRed2 = new javax.swing.JTextField();
-        jLabelPersonalizedTheme3 = new javax.swing.JLabel();
         jLabelPersonalizedTheme4 = new javax.swing.JLabel();
         jLabelPersonalizedTheme5 = new javax.swing.JLabel();
         jLabelPersonalizedTheme6 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        jPasswordSenhaNova = new javax.swing.JPasswordField();
+        jPasswordSenhaAtual = new javax.swing.JPasswordField();
         jLabelAplyPassword = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextFieldRed3 = new javax.swing.JTextField();
-        jLabelPersonalizedTheme7 = new javax.swing.JLabel();
-        jLabelPersonalizedTheme8 = new javax.swing.JLabel();
-        jTextFieldRed4 = new javax.swing.JTextField();
-        jLabelPersonalizedTheme9 = new javax.swing.JLabel();
-        jTextFieldRed5 = new javax.swing.JTextField();
         jLabelPersonalizedTheme10 = new javax.swing.JLabel();
         jLabelPersonalizedTheme11 = new javax.swing.JLabel();
-        jLabelPersonalizedTheme12 = new javax.swing.JLabel();
-        jTextFieldRed6 = new javax.swing.JTextField();
-        jTextFieldRed7 = new javax.swing.JTextField();
-        jLabelPersonalizedTheme13 = new javax.swing.JLabel();
-        jTextFieldRed8 = new javax.swing.JTextField();
-        jLabelPersonalizedTheme14 = new javax.swing.JLabel();
         jLabelPersonalizedTheme15 = new javax.swing.JLabel();
         jRadioButtonPurple = new javax.swing.JRadioButton();
         jRadioButtonDefault = new javax.swing.JRadioButton();
         jRadioButtonYellow = new javax.swing.JRadioButton();
         jRadioButtonRed = new javax.swing.JRadioButton();
         jLabelPersonalizedTheme16 = new javax.swing.JLabel();
+        jFormattedTextFieldTertiary = new javax.swing.JFormattedTextField();
+        jFormattedTextPrimary = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldSecondary = new javax.swing.JFormattedTextField();
+        jRadioButtonTemaPronto = new javax.swing.JRadioButton();
 
         setBorder(null);
         setPreferredSize(new java.awt.Dimension(1000, 720));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         jPanelConfig.setBackground(new java.awt.Color(255, 255, 255));
@@ -94,30 +87,14 @@ public class configuracoes extends javax.swing.JInternalFrame {
         jLabelNome.setBounds(118, 20, 163, 29);
 
         jLabelPersonalizedTheme.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelPersonalizedTheme.setText("R");
+        jLabelPersonalizedTheme.setText("exemplo: 122,122,122");
         jPanelConfig.add(jLabelPersonalizedTheme);
-        jLabelPersonalizedTheme.setBounds(150, 160, 11, 22);
-        jPanelConfig.add(jTextFieldRed);
-        jTextFieldRed.setBounds(170, 150, 39, 32);
+        jLabelPersonalizedTheme.setBounds(150, 360, 200, 22);
 
         jLabelPersonalizedTheme1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelPersonalizedTheme1.setText("Cor Secundária");
         jPanelConfig.add(jLabelPersonalizedTheme1);
         jLabelPersonalizedTheme1.setBounds(180, 200, 130, 22);
-        jPanelConfig.add(jTextFieldRed1);
-        jTextFieldRed1.setBounds(230, 150, 39, 32);
-
-        jLabelPersonalizedTheme2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelPersonalizedTheme2.setText("G");
-        jPanelConfig.add(jLabelPersonalizedTheme2);
-        jLabelPersonalizedTheme2.setBounds(213, 160, 12, 22);
-        jPanelConfig.add(jTextFieldRed2);
-        jTextFieldRed2.setBounds(290, 150, 39, 32);
-
-        jLabelPersonalizedTheme3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelPersonalizedTheme3.setText("B");
-        jPanelConfig.add(jLabelPersonalizedTheme3);
-        jLabelPersonalizedTheme3.setBounds(275, 160, 11, 22);
 
         jLabelPersonalizedTheme4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelPersonalizedTheme4.setText("Alterar senha padrão:");
@@ -134,13 +111,13 @@ public class configuracoes extends javax.swing.JInternalFrame {
         jPanelConfig.add(jLabelPersonalizedTheme6);
         jLabelPersonalizedTheme6.setBounds(120, 500, 98, 22);
 
-        jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanelConfig.add(jPasswordField1);
-        jPasswordField1.setBounds(220, 490, 320, 30);
+        jPasswordSenhaNova.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanelConfig.add(jPasswordSenhaNova);
+        jPasswordSenhaNova.setBounds(220, 490, 320, 30);
 
-        jPasswordField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanelConfig.add(jPasswordField2);
-        jPasswordField2.setBounds(220, 450, 320, 30);
+        jPasswordSenhaAtual.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanelConfig.add(jPasswordSenhaAtual);
+        jPasswordSenhaAtual.setBounds(220, 450, 320, 30);
 
         jLabelAplyPassword.setBackground(new java.awt.Color(16, 125, 172));
         jLabelAplyPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -148,6 +125,9 @@ public class configuracoes extends javax.swing.JInternalFrame {
         jLabelAplyPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelAplyPassword.setOpaque(true);
         jLabelAplyPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelAplyPasswordMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabelAplyPasswordMouseEntered(evt);
             }
@@ -165,27 +145,6 @@ public class configuracoes extends javax.swing.JInternalFrame {
         jLabelAplyPassword.setBounds(660, 450, 110, 60);
         jPanelConfig.add(jSeparator1);
         jSeparator1.setBounds(120, 390, 780, 10);
-        jPanelConfig.add(jTextFieldRed3);
-        jTextFieldRed3.setBounds(170, 230, 39, 32);
-
-        jLabelPersonalizedTheme7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelPersonalizedTheme7.setText("R");
-        jPanelConfig.add(jLabelPersonalizedTheme7);
-        jLabelPersonalizedTheme7.setBounds(150, 230, 11, 22);
-
-        jLabelPersonalizedTheme8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelPersonalizedTheme8.setText("G");
-        jPanelConfig.add(jLabelPersonalizedTheme8);
-        jLabelPersonalizedTheme8.setBounds(213, 230, 12, 22);
-        jPanelConfig.add(jTextFieldRed4);
-        jTextFieldRed4.setBounds(230, 230, 39, 32);
-
-        jLabelPersonalizedTheme9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelPersonalizedTheme9.setText("B");
-        jPanelConfig.add(jLabelPersonalizedTheme9);
-        jLabelPersonalizedTheme9.setBounds(275, 230, 11, 22);
-        jPanelConfig.add(jTextFieldRed5);
-        jTextFieldRed5.setBounds(290, 230, 39, 32);
 
         jLabelPersonalizedTheme10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelPersonalizedTheme10.setText("Inserir tema personalizado (RGB):");
@@ -195,28 +154,7 @@ public class configuracoes extends javax.swing.JInternalFrame {
         jLabelPersonalizedTheme11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelPersonalizedTheme11.setText("Temas prontos");
         jPanelConfig.add(jLabelPersonalizedTheme11);
-        jLabelPersonalizedTheme11.setBounds(430, 120, 130, 22);
-
-        jLabelPersonalizedTheme12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelPersonalizedTheme12.setText("G");
-        jPanelConfig.add(jLabelPersonalizedTheme12);
-        jLabelPersonalizedTheme12.setBounds(213, 310, 12, 22);
-        jPanelConfig.add(jTextFieldRed6);
-        jTextFieldRed6.setBounds(170, 310, 39, 32);
-        jPanelConfig.add(jTextFieldRed7);
-        jTextFieldRed7.setBounds(230, 310, 39, 32);
-
-        jLabelPersonalizedTheme13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelPersonalizedTheme13.setText("B");
-        jPanelConfig.add(jLabelPersonalizedTheme13);
-        jLabelPersonalizedTheme13.setBounds(275, 310, 11, 22);
-        jPanelConfig.add(jTextFieldRed8);
-        jTextFieldRed8.setBounds(290, 310, 39, 32);
-
-        jLabelPersonalizedTheme14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelPersonalizedTheme14.setText("R");
-        jPanelConfig.add(jLabelPersonalizedTheme14);
-        jLabelPersonalizedTheme14.setBounds(150, 310, 11, 22);
+        jLabelPersonalizedTheme11.setBounds(420, 130, 130, 22);
 
         jLabelPersonalizedTheme15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelPersonalizedTheme15.setText("Cor Terciária");
@@ -226,27 +164,65 @@ public class configuracoes extends javax.swing.JInternalFrame {
         buttonGroupCoresDefault.add(jRadioButtonPurple);
         jRadioButtonPurple.setText("Roxo");
         jPanelConfig.add(jRadioButtonPurple);
-        jRadioButtonPurple.setBounds(450, 240, 93, 28);
+        jRadioButtonPurple.setBounds(440, 250, 93, 28);
 
         buttonGroupCoresDefault.add(jRadioButtonDefault);
         jRadioButtonDefault.setText("Azul");
         jPanelConfig.add(jRadioButtonDefault);
-        jRadioButtonDefault.setBounds(450, 150, 90, 28);
+        jRadioButtonDefault.setBounds(440, 160, 90, 28);
 
         buttonGroupCoresDefault.add(jRadioButtonYellow);
         jRadioButtonYellow.setText("Amarelo");
         jPanelConfig.add(jRadioButtonYellow);
-        jRadioButtonYellow.setBounds(450, 180, 93, 28);
+        jRadioButtonYellow.setBounds(440, 190, 93, 28);
 
         buttonGroupCoresDefault.add(jRadioButtonRed);
         jRadioButtonRed.setText("Vermelho");
         jPanelConfig.add(jRadioButtonRed);
-        jRadioButtonRed.setBounds(450, 210, 93, 28);
+        jRadioButtonRed.setBounds(440, 220, 93, 28);
 
         jLabelPersonalizedTheme16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelPersonalizedTheme16.setText("Cor primária");
         jPanelConfig.add(jLabelPersonalizedTheme16);
-        jLabelPersonalizedTheme16.setBounds(190, 120, 110, 22);
+        jLabelPersonalizedTheme16.setBounds(190, 130, 110, 22);
+
+        try {
+            jFormattedTextFieldTertiary.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###,###,###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanelConfig.add(jFormattedTextFieldTertiary);
+        jFormattedTextFieldTertiary.setBounds(170, 310, 160, 35);
+
+        try {
+            jFormattedTextPrimary.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###,###,###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanelConfig.add(jFormattedTextPrimary);
+        jFormattedTextPrimary.setBounds(170, 160, 160, 35);
+
+        try {
+            jFormattedTextFieldSecondary.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###,###,###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanelConfig.add(jFormattedTextFieldSecondary);
+        jFormattedTextFieldSecondary.setBounds(170, 230, 160, 35);
+
+        jRadioButtonTemaPronto.setText("Usar tema pronto");
+        jRadioButtonTemaPronto.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jRadioButtonTemaProntoItemStateChanged(evt);
+            }
+        });
+        jRadioButtonTemaPronto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonTemaProntoActionPerformed(evt);
+            }
+        });
+        jPanelConfig.add(jRadioButtonTemaPronto);
+        jRadioButtonTemaPronto.setBounds(440, 280, 150, 28);
 
         getContentPane().add(jPanelConfig);
         jPanelConfig.setBounds(0, 0, 1000, 720);
@@ -258,6 +234,7 @@ public class configuracoes extends javax.swing.JInternalFrame {
     //java.awt.Color primary = new java.awt.Color(16, 125, 172);
     //java.awt.Color tertiary = new java.awt.Color(113, 199, 236);    
     
+    interacFunctions bdfunctions = new interacFunctions();
     java.awt.Color primary;
     java.awt.Color secondary;
     java.awt.Color tertiary;
@@ -300,12 +277,74 @@ public class configuracoes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabelAplyPasswordMouseReleased
 
     private void jLabelAplyColorsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAplyColorsMouseClicked
-        
+        String dados[] = new String[3];
+        if (jRadioButtonTemaPronto.isSelected()==false){
+            dados[0] = jFormattedTextPrimary.getText();
+            dados[1] = jFormattedTextFieldSecondary.getText();
+            dados[2] = jFormattedTextFieldTertiary.getText();
+        }
+        else{
+            if (jRadioButtonDefault.isSelected()){
+                dados[0] = "016,125,172";
+                dados[1] = "024,154,211";
+                dados[2] = "113,199,236";
+            }
+        }
+        bdfunctions.updateValue("cores", dados);
     }//GEN-LAST:event_jLabelAplyColorsMouseClicked
+
+    private void jLabelAplyPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAplyPasswordMouseClicked
+        String dados[] = new String[2];
+        dados[0]=jPasswordSenhaAtual.getText();
+        dados[1]=jPasswordSenhaNova.getText();
+        bdfunctions.updateValue("senha", dados);
+    }//GEN-LAST:event_jLabelAplyPasswordMouseClicked
+
+    private void jRadioButtonTemaProntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTemaProntoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonTemaProntoActionPerformed
+
+    private void jRadioButtonTemaProntoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButtonTemaProntoItemStateChanged
+        if (jRadioButtonPurple.isEnabled()){
+            jRadioButtonPurple.setEnabled(false);
+            jRadioButtonRed.setEnabled(false);
+            jRadioButtonYellow.setEnabled(false);
+            jRadioButtonDefault.setEnabled(false);
+            
+            jFormattedTextFieldSecondary.setEnabled(true);
+            jFormattedTextPrimary.setEnabled(true);
+            jFormattedTextFieldTertiary.setEnabled(true);
+        }
+        else{
+            jRadioButtonPurple.setEnabled(true);
+            jRadioButtonRed.setEnabled(true);
+            jRadioButtonYellow.setEnabled(true);
+            jRadioButtonDefault.setEnabled(true);
+            
+            jFormattedTextFieldSecondary.setEnabled(false);
+            jFormattedTextPrimary.setEnabled(false);
+            jFormattedTextFieldTertiary.setEnabled(false);
+        }
+    }//GEN-LAST:event_jRadioButtonTemaProntoItemStateChanged
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        jRadioButtonTemaPronto.setSelected(false);
+        jRadioButtonPurple.setEnabled(false);
+        jRadioButtonRed.setEnabled(false);
+        jRadioButtonYellow.setEnabled(false);
+        jRadioButtonDefault.setEnabled(false);
+            
+        jFormattedTextFieldSecondary.setEnabled(true);
+        jFormattedTextPrimary.setEnabled(true);
+        jFormattedTextFieldTertiary.setEnabled(true);
+    }//GEN-LAST:event_formComponentShown
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupCoresDefault;
+    private javax.swing.JFormattedTextField jFormattedTextFieldSecondary;
+    private javax.swing.JFormattedTextField jFormattedTextFieldTertiary;
+    private javax.swing.JFormattedTextField jFormattedTextPrimary;
     private javax.swing.JLabel jLabelAplyColors;
     private javax.swing.JLabel jLabelAplyPassword;
     private javax.swing.JLabel jLabelNome;
@@ -313,35 +352,19 @@ public class configuracoes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelPersonalizedTheme1;
     private javax.swing.JLabel jLabelPersonalizedTheme10;
     private javax.swing.JLabel jLabelPersonalizedTheme11;
-    private javax.swing.JLabel jLabelPersonalizedTheme12;
-    private javax.swing.JLabel jLabelPersonalizedTheme13;
-    private javax.swing.JLabel jLabelPersonalizedTheme14;
     private javax.swing.JLabel jLabelPersonalizedTheme15;
     private javax.swing.JLabel jLabelPersonalizedTheme16;
-    private javax.swing.JLabel jLabelPersonalizedTheme2;
-    private javax.swing.JLabel jLabelPersonalizedTheme3;
     private javax.swing.JLabel jLabelPersonalizedTheme4;
     private javax.swing.JLabel jLabelPersonalizedTheme5;
     private javax.swing.JLabel jLabelPersonalizedTheme6;
-    private javax.swing.JLabel jLabelPersonalizedTheme7;
-    private javax.swing.JLabel jLabelPersonalizedTheme8;
-    private javax.swing.JLabel jLabelPersonalizedTheme9;
     private javax.swing.JPanel jPanelConfig;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JPasswordField jPasswordSenhaAtual;
+    private javax.swing.JPasswordField jPasswordSenhaNova;
     private javax.swing.JRadioButton jRadioButtonDefault;
     private javax.swing.JRadioButton jRadioButtonPurple;
     private javax.swing.JRadioButton jRadioButtonRed;
+    private javax.swing.JRadioButton jRadioButtonTemaPronto;
     private javax.swing.JRadioButton jRadioButtonYellow;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextFieldRed;
-    private javax.swing.JTextField jTextFieldRed1;
-    private javax.swing.JTextField jTextFieldRed2;
-    private javax.swing.JTextField jTextFieldRed3;
-    private javax.swing.JTextField jTextFieldRed4;
-    private javax.swing.JTextField jTextFieldRed5;
-    private javax.swing.JTextField jTextFieldRed6;
-    private javax.swing.JTextField jTextFieldRed7;
-    private javax.swing.JTextField jTextFieldRed8;
     // End of variables declaration//GEN-END:variables
 }
