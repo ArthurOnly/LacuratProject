@@ -1,6 +1,6 @@
 package view;
 
-import controller.interacFunctions;
+import controller.DBFunctions;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.logging.Level;
@@ -16,9 +16,12 @@ public class Home extends javax.swing.JInternalFrame {
         homeRealTime();
     }
 
-    interacFunctions bdfunctions = new interacFunctions();
+    DBFunctions bdfunctions = new DBFunctions();
 
-    void themeChanger() {
+    public void themeChanger(java.awt.Color primary, java.awt.Color secondary, java.awt.Color tertiary){
+        this.primary=primary;
+        this.secondary=secondary;
+        this.tertiary=tertiary;
         jLabelBG50.setBackground(secondary);
     }
 

@@ -1,6 +1,7 @@
 package view;
 
-import controller.interacFunctions;
+import controller.DBFunctions;
+import controller.PGFunctions;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
@@ -245,11 +246,22 @@ public class dispositivosHome extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    interacFunctions bdfunctions = new interacFunctions(); 
-    java.awt.Color secondary = new java.awt.Color(24, 154, 211);
-    java.awt.Color primary = new java.awt.Color(16, 125, 172);
-    java.awt.Color tertiary = new java.awt.Color(113, 199, 236);
+    DBFunctions bdfunctions = new DBFunctions();
+    PGFunctions pgfunctions = new PGFunctions();
+    java.awt.Color secondary;
+    java.awt.Color primary;
+    java.awt.Color tertiary;
     java.awt.Color black = new java.awt.Color(0, 0, 0);
+    
+    public void themeChanger(java.awt.Color primary, java.awt.Color secondary, java.awt.Color tertiary){
+        this.primary=primary;
+        this.secondary=secondary;
+        this.tertiary=tertiary;
+        jLabelADD.setBackground(primary);
+        jLabelAtualizar.setBackground(primary);
+        jLabelDelete.setBackground(primary);
+        jLabelPesquisarPorNome.setBackground(primary);
+    }
     
     private void jLabelADDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelADDMouseEntered
         jLabelADD.setBackground(tertiary);
@@ -406,13 +418,13 @@ public class dispositivosHome extends javax.swing.JInternalFrame {
 
     private void jLabelPesquisarPorNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseClicked
         bdfunctions.reloadSelect("dispositivos", "nome LIKE '"+jTextFieldNome.getText()+"%'");
-        bdfunctions.parseToTable(bdfunctions.usuarios, dtmDisp, "dispositivos");
+        pgfunctions.parseToTable(bdfunctions.usuarios, dtmDisp, "dispositivos");
     }//GEN-LAST:event_jLabelPesquisarPorNomeMouseClicked
 
     private void jTextFieldNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNomeKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER){
             bdfunctions.reloadSelect("dispositivos", "nome LIKE '"+jTextFieldNome.getText()+"%'");
-            bdfunctions.parseToTable(bdfunctions.dispositivos, dtmDisp, "dispositivos");
+            pgfunctions.parseToTable(bdfunctions.dispositivos, dtmDisp, "dispositivos");
         }
     }//GEN-LAST:event_jTextFieldNomeKeyPressed
 
@@ -424,7 +436,7 @@ public class dispositivosHome extends javax.swing.JInternalFrame {
     
     void reload(){
         bdfunctions.reloadSelect("dispositivos");
-        bdfunctions.parseToTable(bdfunctions.dispositivos, dtmDisp , "dispositivos");
+        pgfunctions.parseToTable(bdfunctions.dispositivos, dtmDisp , "dispositivos");
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

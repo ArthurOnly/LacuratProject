@@ -2,10 +2,10 @@ package model;
 
 public class dispositivo {
 
-    String nome;
-    String id;
-    String observacoes;
-    Double tempoDeUso;
+    private String nome;
+    private String id;
+    private String observacoes;
+    private Double tempoDeUso;
     private boolean status;
     
     public dispositivo(String nome, String id, String observacoes, Double tempoDeUso, boolean status) {

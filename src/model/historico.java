@@ -1,32 +1,32 @@
 package model;
 
 public class historico {
-    private String userName;
-    private String dispName;
+    private String userId;
+    private String dispId;
     private String data;
     private String id;
 
     public historico(String userName, String dispName, String data, String id) {
-        this.userName = userName;
-        this.dispName = dispName;
+        this.userId = userName;
+        this.dispId = dispName;
         this.data = data;
         this.id = id;
     }    
 
-    public String getUserName() {
-        return userName;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserId(String userName) {
+        this.userId = userName;
     }
 
-    public String getDispName() {
-        return dispName;
+    public String getDispId() {
+        return dispId;
     }
 
-    public void setDispName(String dispName) {
-        this.dispName = dispName;
+    public void setDispId(String dispName) {
+        this.dispId = dispName;
     }
 
     public String getData() {

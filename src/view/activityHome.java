@@ -1,17 +1,15 @@
 package view;
 
-import controller.interacFunctions;
+import controller.DBFunctions;
+import controller.PGFunctions;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import model.functionScripts;
 public class activityHome extends javax.swing.JInternalFrame {
 
     DefaultTableModel dtmAtv;
@@ -21,8 +19,7 @@ public class activityHome extends javax.swing.JInternalFrame {
         dtmAtv = (DefaultTableModel) jTableAtividade.getModel(); 
         jTableAtividade.setRowSorter(new TableRowSorter(dtmAtv));
     }
-
-    
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -44,7 +41,7 @@ public class activityHome extends javax.swing.JInternalFrame {
         jCheckBox1 = new javax.swing.JCheckBox();
         jTextFieldDisp = new javax.swing.JTextField();
         jTextFieldUser = new javax.swing.JTextField();
-        jLabelUser2 = new javax.swing.JLabel();
+        jLabelTempoCedido = new javax.swing.JLabel();
         jSliderSecond = new javax.swing.JSlider();
         jSliderHora = new javax.swing.JSlider();
         jSliderMinute = new javax.swing.JSlider();
@@ -255,10 +252,10 @@ public class activityHome extends javax.swing.JInternalFrame {
         jPanelActivityCRUD.add(jTextFieldUser);
         jTextFieldUser.setBounds(120, 50, 200, 35);
 
-        jLabelUser2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelUser2.setText("Tempo cedido:");
-        jPanelActivityCRUD.add(jLabelUser2);
-        jLabelUser2.setBounds(538, 20, 220, 22);
+        jLabelTempoCedido.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelTempoCedido.setText("Tempo cedido:");
+        jPanelActivityCRUD.add(jLabelTempoCedido);
+        jLabelTempoCedido.setBounds(538, 20, 220, 22);
 
         jSliderSecond.setMaximum(59);
         jSliderSecond.setValue(0);
@@ -325,8 +322,9 @@ public class activityHome extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    //functionScripts fs = new functionScripts();
-    interacFunctions bdfunctions = new interacFunctions(); 
+    DBFunctions bdfunctions = new DBFunctions(); 
+    PGFunctions pgfunctions = new PGFunctions();
+    
     java.awt.Color secondary;
     java.awt.Color primary;
     java.awt.Color tertiary; 
@@ -336,8 +334,7 @@ public class activityHome extends javax.swing.JInternalFrame {
         Calendar cal = Calendar.getInstance();        
         String[] data = cal.getTime().toString().split(" ");
         String month = (cal.get(Calendar.MONTH)+1+"");
-        data[1]=month;  
-        System.out.println(data[0]+" "+data[1]+" "+data[2]+" "+data[3]+" "+data[4]+" "+data[5]);
+        data[1]=month;          
         return data[0]+" "+data[1]+" "+data[2]+" "+data[3]+" "+data[4]+" "+data[5];        
     }
     
@@ -346,7 +343,6 @@ public class activityHome extends javax.swing.JInternalFrame {
         String[] data = cal.getTime().toString().split(" ");
         String month = (cal.get(Calendar.MONTH)+1+"");
         data[1]=month;  
-        System.out.println(data[2]+"/"+data[1]+"/"+data[5]+" "+data[3]);
         return data[2]+"/"+data[1]+"/"+data[5]+" "+data[3];
     }
     
@@ -366,7 +362,10 @@ public class activityHome extends javax.swing.JInternalFrame {
         jComboBoxDispositivo.removeAllItems();
     }
     
-    public void themeChanger(){
+    public void themeChanger(java.awt.Color primary, java.awt.Color secondary, java.awt.Color tertiary){
+        this.primary=primary;
+        this.secondary=secondary;
+        this.tertiary=tertiary;
         jLabelADD.setBackground(primary);
         jLabelAtualizar.setBackground(primary);
         jLabelDelete.setBackground(primary);
@@ -438,7 +437,7 @@ public class activityHome extends javax.swing.JInternalFrame {
         if (evt.getKeyCode() == evt.VK_ENTER){
             jComboBoxUser.removeAllItems();
             bdfunctions.reloadSelect("usuarios", "nome LIKE '"+jTextFieldUser.getText()+"%'");
-            bdfunctions.parseToCombo(bdfunctions.usuarios, jComboBoxUser, "usuario");
+            pgfunctions.parseToCombo(bdfunctions.usuarios, jComboBoxUser, "usuario");
         }
     }//GEN-LAST:event_jTextFieldUserKeyPressed
 
@@ -483,7 +482,7 @@ public class activityHome extends javax.swing.JInternalFrame {
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         bdfunctions.reloadSelect("atividade");
-        bdfunctions.parseToTable(bdfunctions.atividades, dtmAtv, "atividades");
+        pgfunctions.parseToTable(bdfunctions.atividades, dtmAtv, "atividades");
         bdfunctions.reloadSelect("usuarios");
         bdfunctions.reloadSelect("dispositivos");
         jCheckBox1.setSelected(false);
@@ -496,8 +495,8 @@ public class activityHome extends javax.swing.JInternalFrame {
         jRadioButtonSectionEndYes.setEnabled(false);
         buttonGroupAutomaticEnd.clearSelection();
         parseToCombo();         
-        bdfunctions.parseToCombo(bdfunctions.usuarios, jComboBoxUser, "usuario");
-        bdfunctions.parseToCombo(bdfunctions.dispositivos, jComboBoxDispositivo, "dispositivo");
+        pgfunctions.parseToCombo(bdfunctions.usuarios, jComboBoxUser, "usuario");
+        pgfunctions.parseToCombo(bdfunctions.dispositivos, jComboBoxDispositivo, "dispositivo");
     }//GEN-LAST:event_formComponentShown
 
     private void jTextFieldDispMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldDispMouseClicked
@@ -508,7 +507,7 @@ public class activityHome extends javax.swing.JInternalFrame {
         if (evt.getKeyCode() == evt.VK_ENTER){
             jComboBoxDispositivo.removeAllItems();
             bdfunctions.reloadSelect("dispositivos", "nome LIKE '"+jTextFieldDisp.getText()+"%'");
-            bdfunctions.parseToCombo(bdfunctions.dispositivos, jComboBoxDispositivo, "dispositivo");
+            pgfunctions.parseToCombo(bdfunctions.dispositivos, jComboBoxDispositivo, "dispositivo");
         }
     }//GEN-LAST:event_jTextFieldDispKeyPressed
 
@@ -519,7 +518,8 @@ public class activityHome extends javax.swing.JInternalFrame {
     
     private void jLabelADDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelADDMouseClicked
         try{
-            if (jComboBoxUser.getSelectedIndex()==0 || jComboBoxDispositivo.getSelectedIndex()==0 || (jRadioButtonSectionEndNo.isSelected()==false && jRadioButtonSectionEndYes.isSelected()==false && jCheckBox1.isSelected())){                
+            if (jComboBoxUser.getSelectedIndex()==0 || jComboBoxDispositivo.getSelectedIndex()==0 || (jRadioButtonSectionEndNo.isSelected()==false && jRadioButtonSectionEndYes.isSelected()==false && jCheckBox1.isSelected()
+                    ) || (jSliderSecond.getValue()+jSliderMinute.getValue()+jSliderSecond.getValue()==0 && jCheckBox1.isSelected())){                
                 JOptionPane.showMessageDialog(null, "Preencha os campos indicados");                
                 if (jComboBoxUser.getSelectedIndex()==0){                    
                     jLabelUser.setForeground(primary);
@@ -529,6 +529,9 @@ public class activityHome extends javax.swing.JInternalFrame {
                 } 
                 if (jRadioButtonSectionEndNo.isSelected()==false && jRadioButtonSectionEndYes.isSelected()==false){
                     jLabelAutomatic.setForeground(primary);
+                }
+                if (jSliderSecond.getValue()+jSliderMinute.getValue()+jSliderSecond.getValue()==0){
+                    jLabelTempoCedido.setForeground(primary);
                 }
             }
             else{                
@@ -544,9 +547,7 @@ public class activityHome extends javax.swing.JInternalFrame {
                 else{
                     at="false";
                 }                
-                dados[0]='"'+(jComboBoxUser.getSelectedItem()+"")+'"';                
-                dados[1]='"'+bdfunctions.usuarios.get(jComboBoxUser.getSelectedIndex()-1).getID()+'"';                     
-                dados[2]='"'+(jComboBoxDispositivo.getSelectedItem()+"")+'"';                
+                dados[1]='"'+bdfunctions.usuarios.get(jComboBoxUser.getSelectedIndex()-1).getID()+'"';                         
                 dados[3]='"'+bdfunctions.dispositivos.get(jComboBoxDispositivo.getSelectedIndex()-1).getID()+'"';                  
                 dados[4]=at;                  
                 dados[5]='"'+createData()+'"';               
@@ -587,8 +588,8 @@ public class activityHome extends javax.swing.JInternalFrame {
                 dadosEnv[1] = bdfunctions.atividades.get(jTableAtividade.getSelectedRow()).getDispositovID();
                 dadosEnv[0] = actual+"";
                 String[] dadosEnvHistory =  new String[3];
-                dadosEnvHistory[0] = "'"+bdfunctions.atividades.get(jTableAtividade.getSelectedRow()).getUsuario()+"'";
-                dadosEnvHistory[1] = "'"+bdfunctions.atividades.get(jTableAtividade.getSelectedRow()).getDispositivo()+"'";
+                dadosEnvHistory[0] = "'"+bdfunctions.atividades.get(jTableAtividade.getSelectedRow()).getUsuarioID()+"'";
+                dadosEnvHistory[1] = "'"+bdfunctions.atividades.get(jTableAtividade.getSelectedRow()).getDispositovID()+"'";
                 dadosEnvHistory[2] = "'"+bdfunctions.atividades.get(jTableAtividade.getSelectedRow()).dataToString(bdfunctions.atividades.get(jTableAtividade.getSelectedRow()).getDataInicial())+" à "+createDataEnd()+"'";
                 bdfunctions.updateValue("dispositivoTime", dadosEnv);
                 bdfunctions.insertValue("historico", dadosEnvHistory);
@@ -644,10 +645,10 @@ public class activityHome extends javax.swing.JInternalFrame {
         bdfunctions.reloadSelect("atividade");
         bdfunctions.reloadSelect("usuarios");
         bdfunctions.reloadSelect("dispositivos");
-        bdfunctions.parseToTable(bdfunctions.atividades, dtmAtv , "atividades");
+        pgfunctions.parseToTable(bdfunctions.atividades, dtmAtv , "atividades");
         parseToCombo();
-        bdfunctions.parseToCombo(bdfunctions.usuarios, jComboBoxUser, "usuario");
-        bdfunctions.parseToCombo(bdfunctions.dispositivos, jComboBoxDispositivo, "dispositivo");
+        pgfunctions.parseToCombo(bdfunctions.usuarios, jComboBoxUser, "usuario");
+        pgfunctions.parseToCombo(bdfunctions.dispositivos, jComboBoxDispositivo, "dispositivo");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -663,8 +664,8 @@ public class activityHome extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelHoraCont;
     private javax.swing.JLabel jLabelMinuteCont;
     private javax.swing.JLabel jLabelSecondCont;
+    private javax.swing.JLabel jLabelTempoCedido;
     private javax.swing.JLabel jLabelUser;
-    private javax.swing.JLabel jLabelUser2;
     private javax.swing.JPanel jPanelActivityCRUD;
     private javax.swing.JRadioButton jRadioButtonSectionEndNo;
     private javax.swing.JRadioButton jRadioButtonSectionEndYes;

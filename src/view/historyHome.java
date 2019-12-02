@@ -1,6 +1,8 @@
 package view;
 
-import controller.interacFunctions;
+import controller.DBFunctions;
+import controller.PGFunctions;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -14,7 +16,15 @@ public class historyHome extends javax.swing.JInternalFrame {
         dtmHist = (DefaultTableModel) jTableHistorico.getModel(); 
         jTableHistorico.setRowSorter(new TableRowSorter(dtmHist));
     }
-
+    
+    public void themeChanger(java.awt.Color primary, java.awt.Color secondary, java.awt.Color tertiary){
+        this.primary=primary;
+        this.secondary=secondary;
+        this.tertiary=tertiary;
+        jLabelDelete.setBackground(primary);
+        jLabelPesquisarPorNome.setBackground(primary);
+        jLabelPesquisarPorDisp.setBackground(primary);
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -27,10 +37,10 @@ public class historyHome extends javax.swing.JInternalFrame {
         jLabelDelete = new javax.swing.JLabel();
         jLabelUser = new javax.swing.JLabel();
         jLabelDispositivo = new javax.swing.JLabel();
+        jTextFieldDisp = new javax.swing.JTextField();
         jTextFieldUser = new javax.swing.JTextField();
-        jTextFieldUser1 = new javax.swing.JTextField();
         jLabelPesquisarPorNome = new javax.swing.JLabel();
-        jLabelPesquisarPorNome1 = new javax.swing.JLabel();
+        jLabelPesquisarPorDisp = new javax.swing.JLabel();
 
         setBorder(null);
         setPreferredSize(new java.awt.Dimension(1000, 720));
@@ -80,6 +90,9 @@ public class historyHome extends javax.swing.JInternalFrame {
         jLabelDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabelDelete.setOpaque(true);
         jLabelDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelDeleteMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabelDeleteMouseEntered(evt);
             }
@@ -106,18 +119,28 @@ public class historyHome extends javax.swing.JInternalFrame {
         jPanelActivityCRUD.add(jLabelDispositivo);
         jLabelDispositivo.setBounds(300, 90, 119, 22);
 
-        jTextFieldUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextFieldUser.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldDisp.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTextFieldDisp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldUserActionPerformed(evt);
+                jTextFieldDispActionPerformed(evt);
+            }
+        });
+        jTextFieldDisp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldDispKeyPressed(evt);
+            }
+        });
+        jPanelActivityCRUD.add(jTextFieldDisp);
+        jTextFieldDisp.setBounds(300, 110, 300, 35);
+
+        jTextFieldUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTextFieldUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldUserKeyPressed(evt);
             }
         });
         jPanelActivityCRUD.add(jTextFieldUser);
-        jTextFieldUser.setBounds(300, 110, 300, 35);
-
-        jTextFieldUser1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanelActivityCRUD.add(jTextFieldUser1);
-        jTextFieldUser1.setBounds(300, 50, 300, 35);
+        jTextFieldUser.setBounds(300, 50, 300, 35);
 
         jLabelPesquisarPorNome.setBackground(new java.awt.Color(16, 125, 172));
         jLabelPesquisarPorNome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -146,32 +169,32 @@ public class historyHome extends javax.swing.JInternalFrame {
         jPanelActivityCRUD.add(jLabelPesquisarPorNome);
         jLabelPesquisarPorNome.setBounds(610, 50, 35, 35);
 
-        jLabelPesquisarPorNome1.setBackground(new java.awt.Color(16, 125, 172));
-        jLabelPesquisarPorNome1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelPesquisarPorNome1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
-        jLabelPesquisarPorNome1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelPesquisarPorNome1.setMaximumSize(new java.awt.Dimension(35, 35));
-        jLabelPesquisarPorNome1.setOpaque(true);
-        jLabelPesquisarPorNome1.setPreferredSize(new java.awt.Dimension(35, 35));
-        jLabelPesquisarPorNome1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabelPesquisarPorDisp.setBackground(new java.awt.Color(16, 125, 172));
+        jLabelPesquisarPorDisp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPesquisarPorDisp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/lupa.png"))); // NOI18N
+        jLabelPesquisarPorDisp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabelPesquisarPorDisp.setMaximumSize(new java.awt.Dimension(35, 35));
+        jLabelPesquisarPorDisp.setOpaque(true);
+        jLabelPesquisarPorDisp.setPreferredSize(new java.awt.Dimension(35, 35));
+        jLabelPesquisarPorDisp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelPesquisarPorNome1MouseClicked(evt);
+                jLabelPesquisarPorDispMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelPesquisarPorNome1MouseEntered(evt);
+                jLabelPesquisarPorDispMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelPesquisarPorNome1MouseExited(evt);
+                jLabelPesquisarPorDispMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabelPesquisarPorNome1MousePressed(evt);
+                jLabelPesquisarPorDispMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabelPesquisarPorNome1MouseReleased(evt);
+                jLabelPesquisarPorDispMouseReleased(evt);
             }
         });
-        jPanelActivityCRUD.add(jLabelPesquisarPorNome1);
-        jLabelPesquisarPorNome1.setBounds(610, 110, 35, 35);
+        jPanelActivityCRUD.add(jLabelPesquisarPorDisp);
+        jLabelPesquisarPorDisp.setBounds(610, 110, 35, 35);
 
         getContentPane().add(jPanelActivityCRUD);
         jPanelActivityCRUD.setBounds(0, 0, 1000, 720);
@@ -183,7 +206,8 @@ public class historyHome extends javax.swing.JInternalFrame {
     java.awt.Color primary;
     java.awt.Color tertiary;
     
-    interacFunctions bdfunctions = new interacFunctions();
+    DBFunctions bdfunctions = new DBFunctions();
+    PGFunctions pgfunctions = new PGFunctions();
     
     public void themeChanger(){        
         jLabelDelete.setBackground(primary);
@@ -207,13 +231,13 @@ public class historyHome extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jLabelDeleteMouseReleased
 
-    private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserActionPerformed
+    private void jTextFieldDispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDispActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldUserActionPerformed
+    }//GEN-LAST:event_jTextFieldDispActionPerformed
 
     private void jLabelPesquisarPorNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseClicked
-        //bdfunctions.reloadSelect("dispositivos", "nome LIKE '"+jTextFieldNome.getText()+"%'");
-        //bdfunctions.parseToTable(bdfunctions.usuarios, dtmDisp, "dispositivos");
+        bdfunctions.reloadSelect("historico", "userName LIKE '"+jTextFieldUser.getText()+"%'");
+        pgfunctions.parseToTable(bdfunctions.historico, dtmHist, "historico");
     }//GEN-LAST:event_jLabelPesquisarPorNomeMouseClicked
 
     private void jLabelPesquisarPorNomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseEntered
@@ -234,46 +258,74 @@ public class historyHome extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jLabelPesquisarPorNomeMouseReleased
 
-    private void jLabelPesquisarPorNome1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNome1MouseClicked
-        //bdfunctions.reloadSelect("dispositivos", "nome LIKE '"+jTextFieldNome.getText()+"%'");
-        //bdfunctions.parseToTable(bdfunctions.usuarios, dtmDisp, "dispositivos");
-    }//GEN-LAST:event_jLabelPesquisarPorNome1MouseClicked
+    private void jLabelPesquisarPorDispMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorDispMouseClicked
+        bdfunctions.reloadSelect("historico", "dispName LIKE '"+jTextFieldDisp.getText()+"%'");
+        pgfunctions.parseToTable(bdfunctions.historico, dtmHist, "historico");
+    }//GEN-LAST:event_jLabelPesquisarPorDispMouseClicked
 
-    private void jLabelPesquisarPorNome1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNome1MouseEntered
-        jLabelPesquisarPorNome.setBackground(tertiary);
-    }//GEN-LAST:event_jLabelPesquisarPorNome1MouseEntered
+    private void jLabelPesquisarPorDispMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorDispMouseEntered
+        jLabelPesquisarPorDisp.setBackground(tertiary);
+    }//GEN-LAST:event_jLabelPesquisarPorDispMouseEntered
 
-    private void jLabelPesquisarPorNome1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNome1MouseExited
-        jLabelPesquisarPorNome.setBackground(primary);
-    }//GEN-LAST:event_jLabelPesquisarPorNome1MouseExited
+    private void jLabelPesquisarPorDispMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorDispMouseExited
+        jLabelPesquisarPorDisp.setBackground(primary);
+    }//GEN-LAST:event_jLabelPesquisarPorDispMouseExited
 
-    private void jLabelPesquisarPorNome1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNome1MousePressed
-        jLabelPesquisarPorNome.setBackground(secondary);
-    }//GEN-LAST:event_jLabelPesquisarPorNome1MousePressed
+    private void jLabelPesquisarPorDispMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorDispMousePressed
+        jLabelPesquisarPorDisp.setBackground(secondary);
+    }//GEN-LAST:event_jLabelPesquisarPorDispMousePressed
 
-    private void jLabelPesquisarPorNome1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNome1MouseReleased
-        if(jLabelPesquisarPorNome.getBackground()==secondary){
-            jLabelPesquisarPorNome.setBackground(tertiary);
+    private void jLabelPesquisarPorDispMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorDispMouseReleased
+        if(jLabelPesquisarPorDisp.getBackground()==secondary){
+            jLabelPesquisarPorDisp.setBackground(tertiary);
         }
-    }//GEN-LAST:event_jLabelPesquisarPorNome1MouseReleased
+    }//GEN-LAST:event_jLabelPesquisarPorDispMouseReleased
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         bdfunctions.reloadSelect("historico");
-        bdfunctions.parseToTable(bdfunctions.historico, dtmHist, "historico");        
+        pgfunctions.parseToTable(bdfunctions.historico, dtmHist, "historico");        
     }//GEN-LAST:event_formComponentShown
+
+    private void jTextFieldUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUserKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            bdfunctions.reloadSelect("historico", "userName LIKE '"+jTextFieldUser.getText()+"%'");
+            pgfunctions.parseToTable(bdfunctions.historico, dtmHist, "historico");
+        }
+    }//GEN-LAST:event_jTextFieldUserKeyPressed
+
+    private void jTextFieldDispKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDispKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            bdfunctions.reloadSelect("historico", "dispName LIKE '"+jTextFieldDisp.getText()+"%'");
+            pgfunctions.parseToTable(bdfunctions.historico, dtmHist, "historico");
+        }
+    }//GEN-LAST:event_jTextFieldDispKeyPressed
+
+    private void jLabelDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDeleteMouseClicked
+        if (jTableHistorico.getSelectedRow()!=-1){
+            int input = JOptionPane.showConfirmDialog(null, "Deseja mesmo deletar este registro?");
+            if (input==0){
+                bdfunctions.deletSelected(bdfunctions.historico.get(jTableHistorico.getSelectedRow()));
+                bdfunctions.reloadSelect("historico");
+                pgfunctions.parseToTable(bdfunctions.historico, dtmHist, "historico");                
+            }
+            if (input==1){                    
+                
+            }            
+        }
+    }//GEN-LAST:event_jLabelDeleteMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupAutomaticEnd;
     public javax.swing.JLabel jLabelDelete;
     private javax.swing.JLabel jLabelDispositivo;
+    private javax.swing.JLabel jLabelPesquisarPorDisp;
     private javax.swing.JLabel jLabelPesquisarPorNome;
-    private javax.swing.JLabel jLabelPesquisarPorNome1;
     private javax.swing.JLabel jLabelUser;
     private javax.swing.JPanel jPanelActivityCRUD;
     private javax.swing.JScrollPane jScrollPane;
     public javax.swing.JTable jTableHistorico;
+    private javax.swing.JTextField jTextFieldDisp;
     private javax.swing.JTextField jTextFieldUser;
-    private javax.swing.JTextField jTextFieldUser1;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,6 @@
 package view;
 
-import controller.interacFunctions;
+import controller.DBFunctions;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -229,16 +229,20 @@ public class configuracoes extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    //Colocar no construtor
-    //java.awt.Color secondary = new java.awt.Color(24, 154, 211);
-    //java.awt.Color primary = new java.awt.Color(16, 125, 172);
-    //java.awt.Color tertiary = new java.awt.Color(113, 199, 236);    
-    
-    interacFunctions bdfunctions = new interacFunctions();
+   
+    DBFunctions bdfunctions = new DBFunctions();
     java.awt.Color primary;
     java.awt.Color secondary;
     java.awt.Color tertiary;
     
+    
+    public void themeChanger(java.awt.Color primary, java.awt.Color secondary, java.awt.Color tertiary){
+        this.primary=primary;
+        this.secondary=secondary;
+        this.tertiary=tertiary;
+        jLabelAplyColors.setBackground(primary);
+        jLabelAplyPassword.setBackground(primary);
+    }
     
     private void jLabelAplyColorsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAplyColorsMouseEntered
         jLabelAplyColors.setBackground(tertiary);
@@ -289,8 +293,24 @@ public class configuracoes extends javax.swing.JInternalFrame {
                 dados[1] = "024,154,211";
                 dados[2] = "113,199,236";
             }
+            if (jRadioButtonPurple.isSelected()){
+                dados[0] = "138,043,226";
+                dados[1] = "148,000,211";
+                dados[2] = "153,050,204";
+            }
+            if (jRadioButtonRed.isSelected()){
+                dados[0] = "255,000,000";
+                dados[1] = "178,034,034";
+                dados[2] = "139,000,000";
+            }
+            if (jRadioButtonYellow.isSelected()){
+                dados[0] = "240,230,140";
+                dados[1] = "255,255,000";
+                dados[2] = "232,238,170";
+            }
         }
         bdfunctions.updateValue("cores", dados);
+        JOptionPane.showMessageDialog(null, "Reaabra o programa para cosolidar as alterações");
     }//GEN-LAST:event_jLabelAplyColorsMouseClicked
 
     private void jLabelAplyPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAplyPasswordMouseClicked
@@ -298,6 +318,7 @@ public class configuracoes extends javax.swing.JInternalFrame {
         dados[0]=jPasswordSenhaAtual.getText();
         dados[1]=jPasswordSenhaNova.getText();
         bdfunctions.updateValue("senha", dados);
+        JOptionPane.showMessageDialog(null, "Senha alterada com sucesso");
     }//GEN-LAST:event_jLabelAplyPasswordMouseClicked
 
     private void jRadioButtonTemaProntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonTemaProntoActionPerformed

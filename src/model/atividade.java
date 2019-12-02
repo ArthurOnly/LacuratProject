@@ -5,24 +5,20 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import controller.interacFunctions;
+import controller.DBFunctions;
 
-public class atividade {
-    private String usuario;
+public class atividade {   
     private String usuarioID;
-    private String dispositivo;
     private String dispositovID;
     private boolean automatic;        
     private String dataInicial;
     private String dataFinal; 
     private String id;
-    interacFunctions inf = new interacFunctions();
+    DBFunctions inf = new DBFunctions();
     
 
-    public atividade(String usuario, String usuarioID, String dispositivo, String dispositovID, boolean automatic, String dataInicial, String dataFinal, String id) {
-        this.usuario = usuario;
-        this.usuarioID = usuarioID;
-        this.dispositivo = dispositivo;
+    public atividade(String usuarioID, String dispositovID, boolean automatic, String dataInicial, String dataFinal, String id) {
+        this.usuarioID = usuarioID;        
         this.dispositovID = dispositovID;
         this.automatic = automatic;        
         this.dataInicial = dataInicial;
@@ -39,28 +35,12 @@ public class atividade {
         }
     }
     
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
     public String getUsuarioID() {
         return usuarioID;
     }
 
     public void setUsuarioID(String usuarioID) {
         this.usuarioID = usuarioID;
-    }
-
-    public String getDispositivo() {
-        return dispositivo;
-    }
-
-    public void setDispositivo(String dispositivo) {
-        this.dispositivo = dispositivo;
     }
 
     public String getDispositovID() {

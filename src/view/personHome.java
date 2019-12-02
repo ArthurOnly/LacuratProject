@@ -1,6 +1,7 @@
 package view;
 
-import controller.interacFunctions;
+import controller.DBFunctions;
+import controller.PGFunctions;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
@@ -345,11 +346,24 @@ public class personHome extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    interacFunctions bdfunctions = new interacFunctions(); 
-    java.awt.Color secondary = new java.awt.Color(24, 154, 211);
-    java.awt.Color primary = new java.awt.Color(16, 125, 172);
-    java.awt.Color tertiary = new java.awt.Color(113, 199, 236);
+    DBFunctions bdfunctions = new DBFunctions();
+    PGFunctions pgfunctions = new PGFunctions();
+    java.awt.Color secondary;
+    java.awt.Color primary;
+    java.awt.Color tertiary;
     java.awt.Color black = new java.awt.Color(0, 0, 0);
+    
+    public void themeChanger(java.awt.Color primary, java.awt.Color secondary, java.awt.Color tertiary){
+        this.primary=primary;
+        this.secondary=secondary;
+        this.tertiary=tertiary;
+        jLabelDelete.setBackground(primary);
+        jLabelADD.setBackground(primary);
+        jLabelAtualizar.setBackground(primary);
+        jLabelPesquisarPorNome.setBackground(primary);
+        jLabelPesquisarPorTurma.setBackground(primary);
+        jLabelPesquisarPorNTelefone.setBackground(primary);
+    }
     
     private void jLabelADDMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelADDMouseEntered
         jLabelADD.setBackground(tertiary);
@@ -512,17 +526,17 @@ public class personHome extends javax.swing.JInternalFrame {
 
     private void jLabelPesquisarPorNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseClicked
         bdfunctions.reloadSelect("usuarios", "nome LIKE '"+jTextFieldNome.getText()+"%'");
-        bdfunctions.parseToTable(bdfunctions.usuarios, dtmUsers, "usuarios");
+        pgfunctions.parseToTable(bdfunctions.usuarios, dtmUsers, "usuarios");
     }//GEN-LAST:event_jLabelPesquisarPorNomeMouseClicked
 
     private void jLabelPesquisarPorNTelefoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNTelefoneMouseClicked
         bdfunctions.reloadSelect("usuarios", "telefone LIKE '"+jTextFieldTelefone.getText()+"%'");
-        bdfunctions.parseToTable(bdfunctions.usuarios, dtmUsers, "usuarios");
+        pgfunctions.parseToTable(bdfunctions.usuarios, dtmUsers, "usuarios");
     }//GEN-LAST:event_jLabelPesquisarPorNTelefoneMouseClicked
 
     private void jLabelPesquisarPorTurmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorTurmaMouseClicked
         bdfunctions.reloadSelect("usuarios", "turma LIKE '"+jTextFieldTurma.getText()+"%'");
-        bdfunctions.parseToTable(bdfunctions.usuarios, dtmUsers, "usuarios");
+        pgfunctions.parseToTable(bdfunctions.usuarios, dtmUsers, "usuarios");
     }//GEN-LAST:event_jLabelPesquisarPorTurmaMouseClicked
 
     private void jLabelAtualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAtualizarMouseClicked
@@ -583,7 +597,7 @@ public class personHome extends javax.swing.JInternalFrame {
     private void jTextFieldNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNomeKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER){
             bdfunctions.reloadSelect("usuarios", "nome LIKE '"+jTextFieldNome.getText()+"%'");
-            bdfunctions.parseToTable(bdfunctions.usuarios, dtmUsers, "usuarios");
+            pgfunctions.parseToTable(bdfunctions.usuarios, dtmUsers, "usuarios");
         }
     }//GEN-LAST:event_jTextFieldNomeKeyPressed
 
@@ -603,7 +617,7 @@ public class personHome extends javax.swing.JInternalFrame {
     
     void reload(){
         bdfunctions.reloadSelect("usuarios");
-        bdfunctions.parseToTable(bdfunctions.usuarios, dtmUsers, "usuarios");
+        pgfunctions.parseToTable(bdfunctions.usuarios, dtmUsers, "usuarios");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
