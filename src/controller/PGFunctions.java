@@ -138,4 +138,23 @@ public class PGFunctions {
         }
         return "error";
     }
+    
+    public String getUserIdbyName(String username){
+        bdfunctions.reloadSelect("usuarios");        
+        for (int i=0;i<bdfunctions.usuarios.size();i++){            
+            if (bdfunctions.usuarios.get(i).getNome().equals(username)){
+                return bdfunctions.usuarios.get(i).getID();
+            }
+        }
+        return "error";
+    }
+    public String getDispIdbyName(String dispname){
+        bdfunctions.reloadSelect("dispositivos");        
+        for (int i=0;i<bdfunctions.dispositivos.size();i++){            
+            if (bdfunctions.dispositivos.get(i).getNome().equals(dispname)){
+                return bdfunctions.dispositivos.get(i).getID();
+            }
+        }
+        return "error";
+    }
 }

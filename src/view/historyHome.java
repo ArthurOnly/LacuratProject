@@ -236,7 +236,7 @@ public class historyHome extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextFieldDispActionPerformed
 
     private void jLabelPesquisarPorNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNomeMouseClicked
-        bdfunctions.reloadSelect("historico", "userName LIKE '"+jTextFieldUser.getText()+"%'");
+        bdfunctions.reloadSelect("historico join usuarios", "historico.userId=usuarios.id and nome LIKE '"+jTextFieldUser.getText()+"%'");
         pgfunctions.parseToTable(bdfunctions.historico, dtmHist, "historico");
     }//GEN-LAST:event_jLabelPesquisarPorNomeMouseClicked
 
@@ -259,7 +259,7 @@ public class historyHome extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabelPesquisarPorNomeMouseReleased
 
     private void jLabelPesquisarPorDispMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorDispMouseClicked
-        bdfunctions.reloadSelect("historico", "dispName LIKE '"+jTextFieldDisp.getText()+"%'");
+        bdfunctions.reloadSelect("historico join dispositivos", "historico.dispId==dispositivos.id and nome LIKE '"+jTextFieldDisp.getText()+"%'");
         pgfunctions.parseToTable(bdfunctions.historico, dtmHist, "historico");
     }//GEN-LAST:event_jLabelPesquisarPorDispMouseClicked
 
@@ -288,14 +288,14 @@ public class historyHome extends javax.swing.JInternalFrame {
 
     private void jTextFieldUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUserKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER){
-            bdfunctions.reloadSelect("historico", "userName LIKE '"+jTextFieldUser.getText()+"%'");
+            bdfunctions.reloadSelect("historico join usuarios", "historico.userId=usuarios.id and nome LIKE '"+jTextFieldUser.getText()+"%'");
             pgfunctions.parseToTable(bdfunctions.historico, dtmHist, "historico");
         }
     }//GEN-LAST:event_jTextFieldUserKeyPressed
 
     private void jTextFieldDispKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDispKeyPressed
         if (evt.getKeyCode() == evt.VK_ENTER){
-            bdfunctions.reloadSelect("historico", "dispName LIKE '"+jTextFieldDisp.getText()+"%'");
+            bdfunctions.reloadSelect("historico join dispositivos", "historico.dispId==dispositivos.id and nome LIKE '"+jTextFieldDisp.getText()+"%'");
             pgfunctions.parseToTable(bdfunctions.historico, dtmHist, "historico");
         }
     }//GEN-LAST:event_jTextFieldDispKeyPressed

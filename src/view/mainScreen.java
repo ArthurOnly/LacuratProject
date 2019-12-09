@@ -64,7 +64,7 @@ public class mainScreen extends javax.swing.JFrame {
     void verificationEnding(){
         new Thread(){
             public void run(){
-                while(true){                    
+                while(true){
                     bdThr.reloadSelect("atividade");
                     if (bdThr.atividades.size()>0){
                         for (int i=0; i<bdThr.atividades.size();i++){                            
@@ -141,6 +141,7 @@ public class mainScreen extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
+        setResizable(false);
         setSize(new java.awt.Dimension(1280, 720));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -185,35 +186,35 @@ public class mainScreen extends javax.swing.JFrame {
         jLabelHOME.setText("HOME");
         jLabelHOME.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelHOME);
-        jLabelHOME.setBounds(63, 157, 72, 32);
+        jLabelHOME.setBounds(63, 157, 210, 32);
 
         jLabelPESSOAS.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabelPESSOAS.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPESSOAS.setText("PESSOAS");
         jLabelPESSOAS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelPESSOAS);
-        jLabelPESSOAS.setBounds(63, 219, 115, 32);
+        jLabelPESSOAS.setBounds(63, 219, 210, 32);
 
         jLabelATIVOS.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabelATIVOS.setForeground(new java.awt.Color(255, 255, 255));
         jLabelATIVOS.setText("ATIVOS");
         jLabelATIVOS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelATIVOS);
-        jLabelATIVOS.setBounds(63, 343, 89, 32);
+        jLabelATIVOS.setBounds(63, 343, 220, 32);
 
         jLabelDISPOSITIVOS.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabelDISPOSITIVOS.setForeground(new java.awt.Color(255, 255, 255));
         jLabelDISPOSITIVOS.setText("DISPOSITIVOS");
         jLabelDISPOSITIVOS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelDISPOSITIVOS);
-        jLabelDISPOSITIVOS.setBounds(63, 281, 169, 32);
+        jLabelDISPOSITIVOS.setBounds(63, 281, 230, 32);
 
         jLabelCONFIGURACOES.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabelCONFIGURACOES.setForeground(new java.awt.Color(255, 255, 255));
         jLabelCONFIGURACOES.setText("CONFIGURAÇÕES");
         jLabelCONFIGURACOES.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelCONFIGURACOES);
-        jLabelCONFIGURACOES.setBounds(63, 465, 211, 32);
+        jLabelCONFIGURACOES.setBounds(63, 465, 230, 32);
 
         jLabelHOMEI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/home_1.png"))); // NOI18N
         jLabelHOMEI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -245,7 +246,7 @@ public class mainScreen extends javax.swing.JFrame {
         jLabelHistoricoNome.setText("HISTÓRICO");
         jLabelHistoricoNome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelHistoricoNome);
-        jLabelHistoricoNome.setBounds(60, 405, 132, 32);
+        jLabelHistoricoNome.setBounds(60, 405, 230, 32);
 
         jLabelHistoricoI.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/historico.png"))); // NOI18N
         jLabelHistoricoI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

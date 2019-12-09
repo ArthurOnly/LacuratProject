@@ -30,7 +30,6 @@ public class activityHome extends javax.swing.JInternalFrame {
         jTableAtividade = new javax.swing.JTable();
         jLabelDelete = new javax.swing.JLabel();
         jLabelADD = new javax.swing.JLabel();
-        jLabelAtualizar = new javax.swing.JLabel();
         jLabelUser = new javax.swing.JLabel();
         jLabelDispositivo = new javax.swing.JLabel();
         jLabelAutomatic = new javax.swing.JLabel();
@@ -114,7 +113,7 @@ public class activityHome extends javax.swing.JInternalFrame {
             }
         });
         jPanelActivityCRUD.add(jLabelDelete);
-        jLabelDelete.setBounds(356, 185, 110, 40);
+        jLabelDelete.setBounds(286, 185, 110, 40);
 
         jLabelADD.setBackground(new java.awt.Color(16, 125, 172));
         jLabelADD.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -139,29 +138,7 @@ public class activityHome extends javax.swing.JInternalFrame {
             }
         });
         jPanelActivityCRUD.add(jLabelADD);
-        jLabelADD.setBounds(108, 185, 110, 40);
-
-        jLabelAtualizar.setBackground(new java.awt.Color(16, 125, 172));
-        jLabelAtualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelAtualizar.setText("Atualizar");
-        jLabelAtualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabelAtualizar.setOpaque(true);
-        jLabelAtualizar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabelAtualizarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabelAtualizarMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabelAtualizarMousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabelAtualizarMouseReleased(evt);
-            }
-        });
-        jPanelActivityCRUD.add(jLabelAtualizar);
-        jLabelAtualizar.setBounds(232, 185, 110, 40);
+        jLabelADD.setBounds(165, 185, 110, 40);
 
         jLabelUser.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelUser.setText("Usuário:");
@@ -268,6 +245,8 @@ public class activityHome extends javax.swing.JInternalFrame {
         jSliderSecond.setBounds(610, 120, 220, 16);
 
         jSliderHora.setMaximum(23);
+        jSliderHora.setPaintLabels(true);
+        jSliderHora.setPaintTicks(true);
         jSliderHora.setSnapToTicks(true);
         jSliderHora.setValue(0);
         jSliderHora.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -289,7 +268,7 @@ public class activityHome extends javax.swing.JInternalFrame {
             }
         });
         jPanelActivityCRUD.add(jSliderHora);
-        jSliderHora.setBounds(610, 60, 220, 16);
+        jSliderHora.setBounds(610, 60, 220, 27);
 
         jSliderMinute.setMaximum(59);
         jSliderMinute.setValue(0);
@@ -347,13 +326,14 @@ public class activityHome extends javax.swing.JInternalFrame {
     }
     
     String endData(int[] tempo) throws ParseException{
-        Calendar cal = Calendar.getInstance();         
-        cal.add(cal.SECOND, tempo[2]);
-        cal.add(cal.MINUTE, tempo[1]);
-        cal.add(cal.HOUR, tempo[0]); 
+        Calendar cal = Calendar.getInstance();  
+        cal.add(Calendar.HOUR, tempo[0]);
+        cal.add(Calendar.MINUTE, tempo[1]);
+        cal.add(Calendar.SECOND, tempo[2]);
         String month = (cal.get(Calendar.MONTH)+1+"");
         String[] data = cal.getTime().toString().split(" ");             
-        data[1]=month;           
+        data[1]=month;        
+        System.out.println(data[0]+" "+data[1]+" "+data[2]+" "+data[3]+" "+data[4]+" "+data[5]);
         return data[0]+" "+data[1]+" "+data[2]+" "+data[3]+" "+data[4]+" "+data[5];
     }
     
@@ -367,7 +347,6 @@ public class activityHome extends javax.swing.JInternalFrame {
         this.secondary=secondary;
         this.tertiary=tertiary;
         jLabelADD.setBackground(primary);
-        jLabelAtualizar.setBackground(primary);
         jLabelDelete.setBackground(primary);
     }
     
@@ -388,24 +367,6 @@ public class activityHome extends javax.swing.JInternalFrame {
             jLabelADD.setBackground(tertiary);
         }        
     }//GEN-LAST:event_jLabelADDMouseReleased
-
-    private void jLabelAtualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAtualizarMouseEntered
-        jLabelAtualizar.setBackground(tertiary);
-    }//GEN-LAST:event_jLabelAtualizarMouseEntered
-
-    private void jLabelAtualizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAtualizarMouseExited
-        jLabelAtualizar.setBackground(primary);
-    }//GEN-LAST:event_jLabelAtualizarMouseExited
-
-    private void jLabelAtualizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAtualizarMousePressed
-        jLabelAtualizar.setBackground(secondary);
-    }//GEN-LAST:event_jLabelAtualizarMousePressed
-
-    private void jLabelAtualizarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAtualizarMouseReleased
-        if(jLabelAtualizar.getBackground()==secondary){
-            jLabelAtualizar.setBackground(tertiary);
-        }
-    }//GEN-LAST:event_jLabelAtualizarMouseReleased
 
     private void jLabelDeleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDeleteMouseEntered
         jLabelDelete.setBackground(tertiary);
@@ -519,7 +480,7 @@ public class activityHome extends javax.swing.JInternalFrame {
     private void jLabelADDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelADDMouseClicked
         try{
             if (jComboBoxUser.getSelectedIndex()==0 || jComboBoxDispositivo.getSelectedIndex()==0 || (jRadioButtonSectionEndNo.isSelected()==false && jRadioButtonSectionEndYes.isSelected()==false && jCheckBox1.isSelected()
-                    ) || (jSliderSecond.getValue()+jSliderMinute.getValue()+jSliderSecond.getValue()==0 && jCheckBox1.isSelected())){                
+                    ) || (jSliderHora.getValue()+jSliderMinute.getValue()+jSliderSecond.getValue()==0 && jCheckBox1.isSelected())){                
                 JOptionPane.showMessageDialog(null, "Preencha os campos indicados");                
                 if (jComboBoxUser.getSelectedIndex()==0){                    
                     jLabelUser.setForeground(primary);
@@ -537,21 +498,28 @@ public class activityHome extends javax.swing.JInternalFrame {
             else{                
                 String[] dados = new String[8];
                 int[] tempo = new int[4];
-                tempo[0]=jSliderHora.getValue();
+                tempo[0]=jSliderHora.getValue()-1;
                 tempo[1]=jSliderMinute.getValue();
-                tempo[2]=jSliderSecond.getValue();
+                System.out.println(jSliderHora.getValue());
+                if (jSliderHora.getValue()==1){
+                    tempo[2]=jSliderSecond.getValue()+1;
+                }
+                else{
+                    tempo[2]=jSliderSecond.getValue();
+                }
                 String at;
                 if (jRadioButtonSectionEndYes.isSelected()){
                     at="true";
                 }
                 else{
                     at="false";
-                }                
+                }         
                 dados[1]='"'+bdfunctions.usuarios.get(jComboBoxUser.getSelectedIndex()-1).getID()+'"';                         
                 dados[3]='"'+bdfunctions.dispositivos.get(jComboBoxDispositivo.getSelectedIndex()-1).getID()+'"';                  
                 dados[4]=at;                  
-                dados[5]='"'+createData()+'"';               
-                dados[6]='"'+endData(tempo)+'"';                
+                dados[5]='"'+createData()+'"';  
+                dados[6]='"'+endData(tempo)+'"';
+                
                 int input = JOptionPane.showConfirmDialog(null, "Deseja adicionar esta nova atividade?");
                 if (input==0){
                     bdfunctions.insertValue("atividade", dados);
@@ -657,7 +625,6 @@ public class activityHome extends javax.swing.JInternalFrame {
     public javax.swing.JComboBox jComboBoxDispositivo;
     public javax.swing.JComboBox jComboBoxUser;
     public javax.swing.JLabel jLabelADD;
-    public javax.swing.JLabel jLabelAtualizar;
     private javax.swing.JLabel jLabelAutomatic;
     public javax.swing.JLabel jLabelDelete;
     private javax.swing.JLabel jLabelDispositivo;

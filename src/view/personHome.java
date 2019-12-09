@@ -172,8 +172,18 @@ public class personHome extends javax.swing.JInternalFrame {
         jLabelTelefone.setText("Telefone:");
 
         jTextFieldTelefone.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTextFieldTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldTelefoneKeyPressed(evt);
+            }
+        });
 
         jTextFieldTurma.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTextFieldTurma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldTurmaKeyPressed(evt);
+            }
+        });
 
         jLabelTurma.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabelTurma.setText("Turma:");
@@ -530,12 +540,12 @@ public class personHome extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jLabelPesquisarPorNomeMouseClicked
 
     private void jLabelPesquisarPorNTelefoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorNTelefoneMouseClicked
-        bdfunctions.reloadSelect("usuarios", "telefone LIKE '"+jTextFieldTelefone.getText()+"%'");
+        bdfunctions.reloadSelect("usuarios", "turma LIKE '"+jTextFieldTelefone.getText()+"%'");
         pgfunctions.parseToTable(bdfunctions.usuarios, dtmUsers, "usuarios");
     }//GEN-LAST:event_jLabelPesquisarPorNTelefoneMouseClicked
 
     private void jLabelPesquisarPorTurmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelPesquisarPorTurmaMouseClicked
-        bdfunctions.reloadSelect("usuarios", "turma LIKE '"+jTextFieldTurma.getText()+"%'");
+        bdfunctions.reloadSelect("usuarios", "telefone LIKE '"+jTextFieldTurma.getText()+"%'");
         pgfunctions.parseToTable(bdfunctions.usuarios, dtmUsers, "usuarios");
     }//GEN-LAST:event_jLabelPesquisarPorTurmaMouseClicked
 
@@ -544,7 +554,6 @@ public class personHome extends javax.swing.JInternalFrame {
             if (jTablePessoas.getSelectedRow()!=-1){
                 if (jTextFieldNome.getText().equals("") || jTextFieldTurma.getText().equals("") || jTextFieldTelefone.getText().equals("")){                
                     JOptionPane.showMessageDialog(null, "Preencha os campos indicados");
-                    System.out.println("texto:"+jTextFieldNome.getText());
                     if (jTextFieldNome.getText().equals("")){                    
                         jLabelNome.setForeground(primary);
                     }
@@ -604,6 +613,20 @@ public class personHome extends javax.swing.JInternalFrame {
     private void jTextFieldNomeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNomeKeyTyped
         
     }//GEN-LAST:event_jTextFieldNomeKeyTyped
+
+    private void jTextFieldTelefoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelefoneKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            bdfunctions.reloadSelect("usuarios", "turma LIKE '"+jTextFieldTelefone.getText()+"%'");
+            pgfunctions.parseToTable(bdfunctions.usuarios, dtmUsers, "usuarios");
+        }
+    }//GEN-LAST:event_jTextFieldTelefoneKeyPressed
+
+    private void jTextFieldTurmaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTurmaKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER){
+            bdfunctions.reloadSelect("usuarios", "telefone LIKE '"+jTextFieldTurma.getText()+"%'");
+            pgfunctions.parseToTable(bdfunctions.usuarios, dtmUsers, "usuarios");
+        }
+    }//GEN-LAST:event_jTextFieldTurmaKeyPressed
     
     void clearFields(){
         jTextFieldNome.setText("");

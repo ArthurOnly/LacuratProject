@@ -112,7 +112,7 @@ public class atividade {
             return "Ilimitado";
         }
         else{
-            return finalTimeUnformated[1]+"/"+finalTimeUnformated[2]+"/"+finalTimeUnformated[5]+" às "+finalTimeUnformated[3];
+            return finalTimeUnformated[2]+"/"+finalTimeUnformated[1]+"/"+finalTimeUnformated[5]+" às "+finalTimeUnformated[3];
         }        
     };
 

@@ -83,7 +83,7 @@ public class Home extends javax.swing.JInternalFrame {
             jLabelUtrapassaram.setText("<html>"+ultrapassaram+" seções manuais já ultrapassaram o tempo definido</html>");
         }
         if (ilimitadas<2){
-            jLabelIlimitadas.setText("<html>"+ilimitadas+ " seção possí tempo ilimitado</html>");
+            jLabelIlimitadas.setText("<html>"+ilimitadas+ " seção possui tempo ilimitado</html>");
         } else{
             jLabelIlimitadas.setText("<html>"+ilimitadas+ " seções possuem tempo ilimitado</html>");
         }

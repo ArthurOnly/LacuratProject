@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -43,7 +45,7 @@ public class DBFunctions {
                 usuarios.clear();
                 while(rs.next()){
                     boolean act;                                
-                    if (rs.getString("ativo")=="1"){act = true;}
+                    if (rs.getString("ativo").equals("1")){act = true;}
                     else{act=false;}                 
                     usuarios.add(new usuario(rs.getString("nome"),rs.getString("telefone"),rs.getString("turma"),rs.getString("obs"),rs.getString("id"),act));
                 }
@@ -52,7 +54,7 @@ public class DBFunctions {
                 dispositivos.clear();
                 while(rs.next()){
                     boolean act;                                
-                    if (rs.getString("ativo")=="1"){act = true;}
+                    if (rs.getString("ativo").equals("1")){act = true;}
                     else{act=false;}                      
                     dispositivos.add(new dispositivo(rs.getString("nome"),rs.getString("id")+"",rs.getString("obs"),Double.parseDouble(rs.getString("tempoDeUso")),act));
                 }
@@ -91,10 +93,10 @@ public class DBFunctions {
             st = con.conexao.createStatement();            
             
             st.executeQuery("select * from "+table+" where "+condition);
-
+            System.out.println("select * from "+table+" where "+condition);
             rs = st.getResultSet();           
            
-            if (table=="usuarios"){
+            if (table.equals("usuarios")){
                 usuarios.clear();
                 while(rs.next()){
                     boolean act;                                
@@ -121,7 +123,7 @@ public class DBFunctions {
                     atividades.add(new atividade(rs.getString("userId"),rs.getString("dispId"),act,rs.getString("dataInicial"),rs.getString("dataFinal"),rs.getString("id")));
                 }
             }
-            if (table=="historico"){
+            if (table=="historico" || table.equals("historico join usuarios") || table.equals("historico join dispositivos")){
                 historico.clear();
                 while(rs.next()){                                                                                    
                     historico.add(new historico(rs.getString("userId"),rs.getString("dispId"),rs.getString("useData"),rs.getString("id")));
@@ -157,7 +159,10 @@ public class DBFunctions {
         try{
             st = con.conexao.createStatement();            
             st.executeUpdate("delete from atividade where id="+atv.getId());
-            st.closeOnCompletion();            
+            st.closeOnCompletion();   
+            String[] dados = {atv.getUsuarioID(),atv.getDispositovID(),"0"};
+            updateValue("userStts", dados);
+            updateValue("dispStts", dados);
         }
         catch(SQLException ex){
             JOptionPane.showMessageDialog(null, "Erro ao deletar atividade");
@@ -195,7 +200,10 @@ public class DBFunctions {
                 st.executeUpdate("insert into dispositivos values ("+dados[0]+",default,"+dados[1]+", 0, false)");                
             }
             if (tipo=="atividade"){  
-                st.executeUpdate("insert into atividade values ("+dados[1]+","+dados[3]+","+dados[4]+","+dados[5]+","+dados[6]+",default)");                
+                st.executeUpdate("insert into atividade values ("+dados[1]+","+dados[3]+","+dados[4]+","+dados[5]+","+dados[6]+",default)"); 
+                String dados2[] = {dados[1],dados[3],"1"};
+                updateValue("userStts", dados2);
+                updateValue("dispStts", dados2);
             }
             if (tipo=="historico"){                  
                 st.executeUpdate("insert into historico values ("+dados[0]+","+dados[1]+","+dados[2]+",default)");                
@@ -234,6 +242,14 @@ public class DBFunctions {
             if (tipo=="cores"){                
                 st.executeUpdate("update gerenciadores set cores = '"+dados[0]+","+dados[1]+","+dados[2]+"' where id=5");
             }
+
+            if (tipo=="userStts"){
+                st.executeUpdate("update usuarios set ativo="+dados[2]+" where id="+dados[0]);
+            }
+            if (tipo=="dispStts"){
+                st.executeUpdate("update dispositivos set ativo="+dados[2]+" where id="+dados[1]);
+            }
+            
             st.closeOnCompletion();
         }
         catch(SQLException ex){
